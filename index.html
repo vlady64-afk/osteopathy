@@ -4,33 +4,34 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>אוסטאופתית רוני פפוביאן</title>
-<meta name="description" content="טיפולי אוסטאופתיה מקצועיים בתל אביב. טיפול בכאבי גב, צוואר ושרירים. רוני פפוביאן אוסטאופתית מוסמכת.">
+<meta name="description" content="טיפולי אוסטאופתיה מקצועיים בתל אביב. פתרונות לכאבי גב, צוואר ושרירים. יחס אישי ותוצאות מוכחות. קבע פגישה אונליין.">
 
 <style>
     body {
         margin: 0;
         font-family: Arial, sans-serif;
         direction: rtl;
-        background: #f4f6f5;
+        background: #f9f9f9;
         color: #333;
+        scroll-behavior: smooth;
     }
 
     header {
         background: #2a6;
         color: white;
-        padding: 80px 20px;
+        padding: 60px 20px;
         text-align: center;
         width: 100%;
     }
 
     header h1 {
         margin: 0;
-        font-size: 3em;
+        font-size: 2.5em;
     }
 
     header p {
         margin-top: 10px;
-        font-size: 1.3em;
+        font-size: 1.2em;
     }
 
     main {
@@ -42,16 +43,28 @@
     }
 
     section {
+        margin-bottom: 60px;
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.8s ease-out;
         background: white;
-        padding: 30px;
-        margin-bottom: 40px;
+        padding: 25px;
         border-radius: 12px;
         box-shadow: 0 3px 12px rgba(0,0,0,0.08);
     }
 
+    section.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
     h2 {
         color: #2a6;
-        margin-top: 0;
+        margin-bottom: 15px;
+    }
+
+    ul {
+        list-style: inside disc;
     }
 
     a.button {
@@ -59,9 +72,9 @@
         background: #2a6;
         color: white;
         text-decoration: none;
-        padding: 14px 28px;
-        border-radius: 8px;
-        font-size: 1.1em;
+        padding: 12px 25px;
+        border-radius: 6px;
+        transition: background 0.3s;
     }
 
     a.button:hover {
@@ -71,13 +84,51 @@
     footer {
         text-align: center;
         padding: 20px;
-        background: #eaeaea;
-        margin-top: 40px;
+        background: #eee;
         font-size: 0.9em;
+        margin-top: 20px;
     }
+
+    /* --- Форма контакта --- */
+    .contact-form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        max-width: 550px;
+        margin: 20px auto;
+    }
+
+    .contact-form label {
+        display: flex;
+        flex-direction: column;
+        font-weight: 600;
+    }
+
+    .contact-form input {
+        padding: 10px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        font-size: 16px;
+        margin-top: 5px;
+    }
+
+    .contact-form button {
+        padding: 12px;
+        background: #2a6;
+        border: none;
+        color: white;
+        border-radius: 10px;
+        font-size: 18px;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+
+    .contact-form button:hover {
+        background: #1f4c3c;
+    }
+
 </style>
 </head>
-
 <body>
 
 <header>
@@ -87,7 +138,7 @@
 
 <main>
 
-    <section>
+    <section class="fade">
         <h2>השירותים שלנו</h2>
         <ul>
             <li>טיפול בכאבי גב</li>
@@ -97,23 +148,46 @@
         </ul>
     </section>
 
-    <section>
+    <section class="fade">
         <h2>צור קשר</h2>
         <p>טלפון: 050-1234567</p>
         <p>אימייל: info@osteopat.co.il</p>
         <a class="button" href="mailto:info@osteopat.co.il">שלח מייל</a>
     </section>
 
-    <section>
+    <section class="fade">
         <h2>קבע פגישה אונליין</h2>
         <p>ניתן לקבוע תור דרך הטלפון או לשלוח בקשה דרך המייל.</p>
         <a class="button" href="mailto:info@osteopat.co.il">קבע עכשיו</a>
     </section>
 
-    <section>
+    <section class="fade">
         <h2>זימון תור מהיר</h2>
         <p>לחץ על הכפתור למעבר למערכת התורים:</p>
         <a class="button" href="https://plannieapp.com/?name=רוניפפוביאן" target="_blank">זימון תור בקליק</a>
+    </section>
+
+    <!-- --- Форма контакта --- -->
+    <section class="fade">
+        <h2>השאירו פרטים ונחזור אליכם</h2>
+        <form action="https://formspree.io/f/YOUR_ID_HERE" method="POST" class="contact-form">
+            <label>
+                שם מלא:
+                <input type="text" name="name" required>
+            </label>
+
+            <label>
+                טלפון:
+                <input type="tel" name="phone" required>
+            </label>
+
+            <label>
+                מייל:
+                <input type="email" name="email" required>
+            </label>
+
+            <button type="submit">שליחה</button>
+        </form>
     </section>
 
 </main>
@@ -121,6 +195,20 @@
 <footer>
     &copy; 2025 כל הזכויות שמורות
 </footer>
+
+<script>
+    // Анимация при скролле
+    const sections = document.querySelectorAll('section.fade');
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.2 });
+
+    sections.forEach(section => observer.observe(section));
+</script>
 
 </body>
 </html>
