@@ -1,16 +1,134 @@
 <!DOCTYPE html>
 <html lang="he">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>אוסטאופת – דף אישי</title>
-    <style>
-        body { font-family: Arial; margin: 40px; direction: rtl; }
-        h1 { color: #2a6; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>אוסטאופת בתל אביב</title>
+<meta name="description" content="טיפולי אוסטאופתיה מקצועיים בתל אביב. פתרונות לכאבי גב, צוואר ושרירים. יחס אישי ותוצאות מוכחות. קבע פגישה אונליין.">
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        direction: rtl;
+        background: #f9f9f9;
+        color: #333;
+        scroll-behavior: smooth;
+    }
+
+    header {
+        background: #2a6;
+        color: white;
+        padding: 60px 20px;
+        text-align: center;
+    }
+
+    header h1 {
+        margin: 0;
+        font-size: 2.5em;
+    }
+
+    header p {
+        margin-top: 10px;
+        font-size: 1.2em;
+    }
+
+    main {
+        padding: 20px;
+    }
+
+    section {
+        margin-bottom: 60px;
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.8s ease-out;
+    }
+
+    section.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    h2 {
+        color: #2a6;
+        margin-bottom: 15px;
+    }
+
+    ul {
+        list-style: inside disc;
+    }
+
+    a.button {
+        display: inline-block;
+        background: #2a6;
+        color: white;
+        text-decoration: none;
+        padding: 12px 25px;
+        border-radius: 6px;
+        transition: background 0.3s;
+    }
+
+    a.button:hover {
+        background: #1f4c3c;
+    }
+
+    footer {
+        text-align: center;
+        padding: 20px;
+        background: #eee;
+        font-size: 0.9em;
+    }
+
+</style>
 </head>
 <body>
-    <h1>ברוך הבא!</h1>
-    <p>זהו אתר הבדיקה שלך ב-GitHub Pages.</p>
+
+<header>
+    <h1>אוסטאופת בתל אביב</h1>
+    <p>טיפולים מותאמים אישית לשיפור בריאות הגב והשרירים</p>
+</header>
+
+<main>
+    <section class="fade">
+        <h2>השירותים שלנו</h2>
+        <ul>
+            <li>טיפול בכאבי גב</li>
+            <li>טיפול בכאבי צוואר וכתפיים</li>
+            <li>טיפול בשרירים תפוסים</li>
+            <li>ייעוץ והכוונה אישית</li>
+        </ul>
+    </section>
+
+    <section class="fade">
+        <h2>צור קשר</h2>
+        <p>טלפון: 050-1234567</p>
+        <p>אימייל: info@osteopat.co.il</p>
+        <a class="button" href="mailto:info@osteopat.co.il">שלח מייל</a>
+    </section>
+
+    <section class="fade">
+        <h2>קבע פגישה אונליין</h2>
+        <p>ניתן לקבוע תור דרך הטלפון או לשלוח בקשה דרך המייל.</p>
+        <a class="button" href="mailto:info@osteopat.co.il">קבע עכשיו</a>
+    </section>
+</main>
+
+<footer>
+    &copy; 2025 כל הזכויות שמורות
+</footer>
+
+<script>
+    // Анимация при скролле
+    const sections = document.querySelectorAll('section.fade');
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.2 });
+
+    sections.forEach(section => observer.observe(section));
+</script>
+
 </body>
 </html>
