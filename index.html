@@ -148,10 +148,10 @@
         box-shadow: 0 3px 12px rgba(0,0,0,0.1);
     }
 
-    /* --- Q&A --- */
+    /* --- Q&A аккордеон --- */
     .faq-item {
-        margin-bottom: 15px;
         border-bottom: 1px solid #ccc;
+        margin-bottom: 10px;
     }
 
     .faq-question {
@@ -185,10 +185,9 @@
     }
 
     .faq-answer.show {
-        max-height: 500px; /* достаточно для текста */
+        max-height: 500px;
         padding-left: 10px;
     }
-
 </style>
 </head>
 <body>
@@ -215,25 +214,30 @@
         </ul>
     </section>
 
-    <!-- --- Новый Q&A блок --- -->
+    <!-- --- Q&A аккордеон --- -->
     <section class="fade">
         <h2>שאלות ותשובות</h2>
 
         <div class="faq-item">
             <div class="faq-question">כמה זמן נמשך טיפול אוסטאופתי?</div>
-            <div class="faq-answer"><p>בדרך כלל טיפול אוסטאופתי נמשך בין 45 ל-60 דקות בהתאם לצורך המטופל.</p></div>
+            <div class="faq-answer">
+                <p>בדרך כלל טיפול אוסטאופתי נמשך בין 45 ל-60 דקות בהתאם לצורך המטופל.</p>
+            </div>
         </div>
 
         <div class="faq-item">
             <div class="faq-question">האם טיפול כואב?</div>
-            <div class="faq-answer"><p>טיפולים הם בדרך כלל לא כואבים. יתכן מעט חוסר נוחות קלה במקרים מסוימים.</p></div>
+            <div class="faq-answer">
+                <p>טיפולים הם בדרך כלל לא כואבים. יתכן מעט חוסר נוחות קלה במקרים מסוימים.</p>
+            </div>
         </div>
 
         <div class="faq-item">
             <div class="faq-question">כמה טיפולים נדרשים?</div>
-            <div class="faq-answer"><p>מספר הטיפולים משתנה לפי מצב המטופל והבעיה הבריאותית. בדרך כלל מומלץ סדרה של 4-6 טיפולים.</p></div>
+            <div class="faq-answer">
+                <p>מספר הטיפולים משתנה לפי מצב המטופל והבעיה הבריאותית. בדרך כלל מומלץ סדרה של 4-6 טיפולים.</p>
+            </div>
         </div>
-
     </section>
 
     <section class="fade">
@@ -298,7 +302,7 @@
         window.open(url, "_blank");
     }
 
-    // Q&A раскрытие
+    // Q&A аккордеон
     const faqQuestions = document.querySelectorAll('.faq-question');
     faqQuestions.forEach(q => {
         q.addEventListener('click', () => {
