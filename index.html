@@ -4,16 +4,24 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>אוסטאופתית רוני פפוביאן</title>
-<meta name="description" content="טיפולי אוסטאופתיה מקצועיים בתל אביב. פתרונות לכאבי גב, צוואר ושרירים. יחס אישי ותוצאות מוכחות. קבע פגישה אונליין.">
+<meta name="description" content="טיפולי אוסטאופתיה מקצועיים בתל אביב. פתרונות לכאבי גב, צוואר ושרירים. יחס אישי ותוצאות מוכחות.">
 
 <style>
-    body {
+    /* --- Общие исправления для горизонтального скролла --- */
+    html, body {
         margin: 0;
+        padding: 0;
+        overflow-x: hidden; /* убираем горизонтальный скролл */
+        box-sizing: border-box;
         font-family: Arial, sans-serif;
         direction: rtl;
         background: #f9f9f9;
         color: #333;
         scroll-behavior: smooth;
+    }
+
+    *, *::before, *::after {
+        box-sizing: inherit;
     }
 
     header {
@@ -39,10 +47,10 @@
         max-width: 1200px;
         margin: auto;
         padding: 40px 20px;
-        box-sizing: border-box;
     }
 
     section {
+        width: 100%;
         margin-bottom: 60px;
         opacity: 0;
         transform: translateY(30px);
