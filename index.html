@@ -75,6 +75,7 @@
         padding: 12px 25px;
         border-radius: 6px;
         transition: background 0.3s;
+        margin-right: 10px;
     }
 
     a.button:hover {
@@ -153,41 +154,29 @@
         <p>טלפון: 050-1234567</p>
         <p>אימייל: info@osteopat.co.il</p>
         <a class="button" href="mailto:info@osteopat.co.il">שלח מייל</a>
-    </section>
 
-    <section class="fade">
-        <h2>קבע פגישה אונליין</h2>
-        <p>ניתן לקבוע תור דרך הטלפון או לשלוח בקשה דרך המייל.</p>
-        <a class="button" href="mailto:info@osteopat.co.il">קבע עכשיו</a>
+        <!-- WhatsApp кнопка -->
+        <form id="waForm" class="contact-form">
+            <label>
+                שם מלא:
+                <input type="text" id="waName" required>
+            </label>
+            <label>
+                טלפון:
+                <input type="tel" id="waPhone" required>
+            </label>
+            <label>
+                מייל:
+                <input type="email" id="waEmail" required>
+            </label>
+            <button type="button" onclick="sendToWA()">שלח בוואטסאפ</button>
+        </form>
     </section>
 
     <section class="fade">
         <h2>זימון תור מהיר</h2>
         <p>לחץ על הכפתור למעבר למערכת התורים:</p>
         <a class="button" href="https://plannieapp.com/?name=רוניפפוביאן" target="_blank">זימון תור בקליק</a>
-    </section>
-
-    <!-- --- Форма контакта --- -->
-    <section class="fade">
-        <h2>השאירו פרטים ונחזור אליכם</h2>
-        <form action="https://formspree.io/f/YOUR_ID_HERE" method="POST" class="contact-form">
-            <label>
-                שם מלא:
-                <input type="text" name="name" required>
-            </label>
-
-            <label>
-                טלפון:
-                <input type="tel" name="phone" required>
-            </label>
-
-            <label>
-                מייל:
-                <input type="email" name="email" required>
-            </label>
-
-            <button type="submit">שליחה</button>
-        </form>
     </section>
 
 </main>
@@ -206,8 +195,21 @@
             }
         });
     }, { threshold: 0.2 });
-
     sections.forEach(section => observer.observe(section));
+
+    // WhatsApp функция
+    function sendToWA() {
+        const name = document.getElementById("waName").value;
+        const phone = document.getElementById("waPhone").value;
+        const email = document.getElementById("waEmail").value;
+
+        const message = `שם: ${name}\nטלפון: ${phone}\nמייל: ${email}`;
+
+        // Вставь свой номер в формате 9725XXXXXXX
+        const waNumber = "9725XXXXXXXX";
+        const url = `https://wa.me/${waNumber}?text=${encodeURIComponent(message)}`;
+        window.open(url, "_blank");
+    }
 </script>
 
 </body>
