@@ -91,12 +91,15 @@
     }
 
     /* --- Форма контакта --- */
+    .contact-form-section {
+        max-width: 600px;
+        margin: 0 auto 60px auto;
+    }
+
     .contact-form {
         display: flex;
         flex-direction: column;
         gap: 15px;
-        max-width: 550px;
-        margin: 20px auto;
     }
 
     .contact-form label {
@@ -154,8 +157,17 @@
         <p>טלפון: 050-1234567</p>
         <p>אימייל: info@osteopat.co.il</p>
         <a class="button" href="mailto:info@osteopat.co.il">שלח מייל</a>
+    </section>
 
-        <!-- WhatsApp кнопка -->
+    <section class="fade">
+        <h2>זימון תור מהיר</h2>
+        <p>לחץ על הכפתור למעבר למערכת התורים:</p>
+        <a class="button" href="https://plannieapp.com/?name=רוניפפוביאן" target="_blank">זימון תור בקליק</a>
+    </section>
+
+    <!-- --- Новая секция с формой --- -->
+    <section class="fade contact-form-section">
+        <h2>השאירו פרטים ואחזור אליכם בהקדם</h2>
         <form id="waForm" class="contact-form">
             <label>
                 שם מלא:
@@ -171,12 +183,6 @@
             </label>
             <button type="button" onclick="sendToWA()">שלח בוואטסאפ</button>
         </form>
-    </section>
-
-    <section class="fade">
-        <h2>זימון תור מהיר</h2>
-        <p>לחץ על הכפתור למעבר למערכת התורים:</p>
-        <a class="button" href="https://plannieapp.com/?name=רוניפפוביאן" target="_blank">זימון תור בקליק</a>
     </section>
 
 </main>
@@ -206,7 +212,7 @@
         const message = `שם: ${name}\nטלפון: ${phone}\nמייל: ${email}`;
 
         // Вставь свой номер в формате 9725XXXXXXX
-        const waNumber = "972545259008";
+        const waNumber = "9725XXXXXXXX";
         const url = `https://wa.me/${waNumber}?text=${encodeURIComponent(message)}`;
         window.open(url, "_blank");
     }
