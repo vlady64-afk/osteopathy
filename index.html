@@ -148,7 +148,49 @@ footer {
     box-shadow: 0 3px 12px rgba(0,0,0,0.1);
 }
 
-/* --- Q&A аккордеон --- */
+/* --- Аккордеон услуги --- */
+.service-item {
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 10px;
+}
+
+.service-title {
+    cursor: pointer;
+    font-weight: 600;
+    padding: 10px 0;
+    position: relative;
+    color: #2a6;
+}
+
+.service-title::after {
+    content: '+';
+    position: absolute;
+    left: 0;
+    font-size: 20px;
+    transition: transform 0.3s;
+}
+
+.service-title.active::after {
+    content: '-';
+}
+
+.service-desc {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease, padding 0.3s ease;
+    padding-left: 0;
+}
+
+.service-desc p {
+    margin: 10px 0;
+}
+
+.service-desc.show {
+    max-height: 300px;
+    padding-left: 10px;
+}
+
+/* --- Аккордеон Q&A --- */
 .faq-item {
     border-bottom: 1px solid #ccc;
     margin-bottom: 10px;
@@ -189,13 +231,13 @@ footer {
     padding-left: 10px;
 }
 
-/* --- Сервисный аккордеон --- */
-.service-item {
+/* --- Аккордеон "Обо мне" --- */
+.about-item {
     border-bottom: 1px solid #ccc;
     margin-bottom: 10px;
 }
 
-.service-title {
+.about-title {
     cursor: pointer;
     font-weight: 600;
     padding: 10px 0;
@@ -203,7 +245,7 @@ footer {
     color: #2a6;
 }
 
-.service-title::after {
+.about-title::after {
     content: '+';
     position: absolute;
     left: 0;
@@ -211,22 +253,22 @@ footer {
     transition: transform 0.3s;
 }
 
-.service-title.active::after {
+.about-title.active::after {
     content: '-';
 }
 
-.service-desc {
+.about-desc {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.5s ease, padding 0.3s ease;
     padding-left: 0;
 }
 
-.service-desc p {
+.about-desc p {
     margin: 10px 0;
 }
 
-.service-desc.show {
+.about-desc.show {
     max-height: 300px;
     padding-left: 10px;
 }
@@ -301,6 +343,32 @@ footer {
             <div class="faq-question">כמה טיפולים נדרשים?</div>
             <div class="faq-answer">
                 <p>מספר הטיפולים משתנה לפי מצב המטופל והבעיה הבריאותית. בדרך כלל מומלץ סדרה של 4-6 טיפולים.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Раздел "Обо мне" -->
+    <section class="fade">
+        <h2>אודותי</h2>
+
+        <div class="about-item">
+            <div class="about-title">מי אני?</div>
+            <div class="about-desc">
+                <p>שמי רוני פפוביאן, אוסטאופתית מוסמכת עם ניסיון של מעל 10 שנים בתחום. אני מתמחה בטיפול בכאבי גב, צוואר ושרירים תפוסים.</p>
+            </div>
+        </div>
+
+        <div class="about-item">
+            <div class="about-title">הגישה שלי לטיפול</div>
+            <div class="about-desc">
+                <p>אני מאמינה בטיפול מותאם אישית, המתבסס על אבחון מקצועי, טכניקות עדינות והקשבה מלאה לצרכי המטופל.</p>
+            </div>
+        </div>
+
+        <div class="about-item">
+            <div class="about-title">למה לבחור בי?</div>
+            <div class="about-desc">
+                <p>אני משלבת ידע מקצועי רחב עם יחס אישי וחם, תוך דגש על תוצאות מוכחות ושיפור איכות החיים של המטופלים שלי.</p>
             </div>
         </div>
     </section>
@@ -382,6 +450,16 @@ faqQuestions.forEach(q => {
 // Сервисный аккордеон
 const serviceTitles = document.querySelectorAll('.service-title');
 serviceTitles.forEach(title => {
+    title.addEventListener('click', () => {
+        title.classList.toggle('active');
+        const desc = title.nextElementSibling;
+        desc.classList.toggle('show');
+    });
+});
+
+// "Обо мне" аккордеон
+const aboutTitles = document.querySelectorAll('.about-title');
+aboutTitles.forEach(title => {
     title.addEventListener('click', () => {
         title.classList.toggle('active');
         const desc = title.nextElementSibling;
