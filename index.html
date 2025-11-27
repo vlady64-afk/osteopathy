@@ -1,80 +1,145 @@
 <!DOCTYPE html>
-<html lang="he" dir="rtl">
+<html lang="he">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>אוסטאופתית רוני פפוביאן</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>אוסטאופתית רוני פפוביאן</title>
+<meta name="description" content="טיפולי אוסטאופתיה מקצועיים בתל אביב. פתרונות לכאבי גב, צוואר ושרירים. יחס אישי ותוצאות מוכחות. קבע פגישה אונליין.">
 
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-            background-color: #f8f8f8;
-            direction: rtl;
-        }
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        direction: rtl;
+        background: #f9f9f9;
+        color: #333;
+        scroll-behavior: smooth;
+    }
 
-        .container {
-            max-width: 750px;   /* Уменьшаем ширину для красивого вида */
-            margin: 0 auto;     /* Центрирование */
-            padding: 20px;
-            background-color: #fff;
-            box-shadow: 0 0 15px rgba(0,0,0,0.1);
-            border-radius: 10px;
-        }
+    /* Центрирование контента на десктопе */
+    main {
+        padding: 20px;
+        max-width: 900px;
+        margin: auto;
+    }
 
-        h1 {
-            text-align: center;
-            margin-bottom: 25px;
-            font-size: 28px;
-            color: #333;
-        }
+    header {
+        background: #2a6;
+        color: white;
+        padding: 60px 20px;
+        text-align: center;
+    }
 
-        p {
-            line-height: 1.6;
-            font-size: 18px;
-            color: #444;
-        }
+    header h1 {
+        margin: 0;
+        font-size: 2.5em;
+    }
 
-        .button-container {
-            text-align: center;
-            margin-top: 30px;
-        }
+    header p {
+        margin-top: 10px;
+        font-size: 1.2em;
+    }
 
-        .btn {
-            background-color: #0078ff;
-            color: #fff;
-            padding: 14px 26px;
-            font-size: 20px;
-            border-radius: 8px;
-            text-decoration: none;
-            display: inline-block;
-            transition: 0.2s;
-        }
+    section {
+        margin-bottom: 60px;
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.8s ease-out;
+    }
 
-        .btn:hover {
-            background-color: #005fcc;
-        }
-    </style>
+    section.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    h2 {
+        color: #2a6;
+        margin-bottom: 15px;
+    }
+
+    ul {
+        list-style: inside disc;
+    }
+
+    a.button {
+        display: inline-block;
+        background: #2a6;
+        color: white;
+        text-decoration: none;
+        padding: 12px 25px;
+        border-radius: 6px;
+        transition: background 0.3s;
+    }
+
+    a.button:hover {
+        background: #1f4c3c;
+    }
+
+    footer {
+        text-align: center;
+        padding: 20px;
+        background: #eee;
+        font-size: 0.9em;
+    }
+</style>
 </head>
-
 <body>
-    <div class="container">
-        <h1>אוסטאופתית רוני פפוביאן</h1>
 
-        <p>
-            ברוכה הבאה! כאן תוכלי למצוא מידע על הטיפולים, הקליניקה וקביעת תורים.
-        </p>
+<header>
+    <h1>אוסטאופתית רוני פפוביאן</h1>
+    <p>טיפולים מותאמים אישית לשיפור בריאות הגב והשרירים</p>
+</header>
 
-        <p>
-            טיפול אוסטאופתי מתאים למגוון רחב של בעיות ומטרתו לאפשר לגוף לחזור לאיזון טבעי.
-        </p>
+<main>
 
-        <div class="button-container">
-            <a class="btn" href="https://plannieapp.com/?name=רוניפפוביאן" target="_blank">
-                זימון תור בקליק
-            </a>
-        </div>
-    </div>
+    <section class="fade">
+        <h2>השירותים שלנו</h2>
+        <ul>
+            <li>טיפול בכאבי גב</li>
+            <li>טיפול בכאבי צוואר וכתפיים</li>
+            <li>טיפול בשרירים תפוסים</li>
+            <li>ייעוץ והכוונה אישית</li>
+        </ul>
+    </section>
+
+    <section class="fade">
+        <h2>צור קשר</h2>
+        <p>טלפון: 050-1234567</p>
+        <p>אימייל: info@osteopat.co.il</p>
+        <a class="button" href="mailto:info@osteopat.co.il">שלח מייל</a>
+    </section>
+
+    <section class="fade">
+        <h2>קבע פגישה אונליין</h2>
+        <p>ניתן לקבוע תור דרך הטלפון או לשלוח בקשה דרך המייל.</p>
+        <a class="button" href="mailto:info@osteopat.co.il">קבע עכשיו</a>
+    </section>
+
+    <section class="fade">
+        <h2>זימון תור מהיר</h2>
+        <p>לחץ על הכפתור למעבר למערכת התורים:</p>
+        <a class="button" href="https://plannieapp.com/?name=רוניפפוביאן" target="_blank">זימון תור בקליק</a>
+    </section>
+
+</main>
+
+<footer>
+    &copy; 2025 כל הזכויות שמורות
+</footer>
+
+<script>
+    const sections = document.querySelectorAll('section.fade');
+
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.2 });
+
+    sections.forEach(section => observer.observe(section));
+</script>
+
 </body>
 </html>
