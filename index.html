@@ -1,472 +1,987 @@
 <!DOCTYPE html>
-<html lang="he">
+<html lang="he" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>אוסטאופתית רוני פפוביאן</title>
-<meta name="description" content="טיפולי אוסטאופתיה מקצועיים בתל אביב. פתרונות לכאבי גב, צוואר ושרירים. יחס אישי ותוצאות מוכחות.">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<style>
-html, body {
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
-    direction: rtl;
-    background: #f9f9f9;
-    color: #333;
-    scroll-behavior: smooth;
-}
+  <title>רוני פפוביאן | אוסטאופתית D.O</title>
+  <meta name="description" content="אוסטאופתיה בנהריה — טיפול מנואלי עדין ומותאם אישית. אבחון מעמיק, בדיקות וטיפול להקלה בכאב ושיפור תפקוד." />
 
-*, *::before, *::after {
-    box-sizing: inherit;
-}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-header {
-    background: #2a6;
-    color: white;
-    padding: 60px 20px;
-    text-align: center;
-    width: 100%;
-}
+  <style>
+    :root{
+      /* Palette */
+      --mint:#CBDED3;
+      --sage:#8BA49A;
+      --sand:#D2C49E;
+      --deep:#3B6255;
+      --cream:#FBF7F0;
+      --cream2:#F7F1E7;
+      --text:#2F2F2F;
 
-header h1 {
-    margin: 0;
-    font-size: 2.3em;
-}
+      --border: rgba(59,98,85,.18);
+      --shadowSoft: 0 10px 30px rgba(47,47,47,.08);
+      --shadow: 0 16px 40px rgba(47,47,47,.10);
+      --radius: 18px;
+      --max: 1120px;
 
-header p {
-    margin-top: 10px;
-    font-size: 1.2em;
-}
+      /* Unified accordion content color */
+      --boxBg: rgba(210,196,158,.18);
+      --boxBorder: rgba(210,196,158,.60);
 
-main {
-    width: 100%;
-    max-width: 1200px;
-    margin: auto;
-    padding: 40px 20px;
-}
+      --headerH: 74px;
+    }
 
-section {
-    width: 100%;
-    margin-bottom: 60px;
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.8s ease-out;
-    background: white;
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 3px 12px rgba(0,0,0,0.08);
-}
+    *{ box-sizing:border-box; }
+    html,body{ margin:0; padding:0; }
+    body{
+      font-family: "Heebo", system-ui, -apple-system, Segoe UI, Arial, sans-serif;
+      color: var(--text);
+      line-height: 1.7;
+      background:
+        radial-gradient(1000px 560px at 88% -10%, rgba(210,196,158,.42), transparent 60%),
+        radial-gradient(900px 520px at 10% 10%, rgba(203,222,211,.34), transparent 60%),
+        var(--cream);
+      scroll-behavior:smooth;
+      overflow-x:hidden;
+    }
 
-section.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
+    a{ color:inherit; text-decoration:none; }
+    .container{ width:min(var(--max), calc(100% - 44px)); margin:0 auto; }
 
-h2 {
-    color: #2a6;
-    margin-bottom: 15px;
-}
+    /* Header */
+    header{
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(10px);
+      background: rgba(251,247,240,.78);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 12px;
+      padding: 14px 0;
+      min-height: var(--headerH);
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap: 12px;
+      min-width: 220px;
+    }
+    .brandText{ display:flex; flex-direction:column; gap:2px; }
+    .brandText strong{
+      font-size: 18px;
+      letter-spacing: .2px;
+      color: var(--deep);
+      font-weight: 900;
+    }
+    .brandText span{
+      font-size: 15px; /* bigger per request */
+      color: rgba(47,47,47,.72);
+      font-weight: 700;
+    }
 
-ul {
-    list-style: inside disc;
-}
+    /* Desktop nav */
+    .desktopNav{ flex: 1; min-width: 0; }
+    .desktopNav ul{
+      list-style:none;
+      margin:0; padding:0;
+      display:flex;
+      gap: 8px;
+      flex-wrap: nowrap;
+      white-space: nowrap;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      align-items:center;
+      justify-content:center;
+      scrollbar-width: none;
+    }
+    .desktopNav ul::-webkit-scrollbar{ display:none; }
+    .desktopNav a{
+      padding: 9px 12px;
+      border-radius: 999px;
+      font-size: 14px;
+      color: rgba(47,47,47,.78);
+      flex: 0 0 auto;
+      border: 1px solid transparent;
+      transition: background .15s ease, border-color .15s ease, transform .15s ease;
+    }
+    .desktopNav a:hover{
+      background: rgba(203,222,211,.45);
+      border-color: rgba(59,98,85,.14);
+      color: var(--deep);
+      transform: translateY(-1px);
+    }
 
-a.button {
-    display: inline-block;
-    background: #2a6;
-    color: white;
-    text-decoration: none;
-    padding: 12px 25px;
-    border-radius: 6px;
-    transition: background 0.3s;
-    margin-right: 10px;
-}
+    .navActions{
+      display:flex;
+      gap: 10px;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:flex-end;
+      min-width: 220px;
+    }
 
-a.button:hover {
-    background: #1f4c3c;
-}
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap: 8px;
+      padding: 11px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(203,222,211,.50);
+      color: var(--deep);
+      font-weight: 800;
+      font-size: 14px;
+      cursor:pointer;
+      transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+      white-space:nowrap;
+    }
+    .btn:hover{
+      transform: translateY(-1px);
+      box-shadow: 0 10px 22px rgba(47,47,47,.08);
+      background: rgba(203,222,211,.70);
+    }
+    .btn.primary{
+      background: var(--deep);
+      color:#fff;
+      border-color: rgba(59,98,85,.35);
+    }
+    .btn.primary:hover{ background:#2f5449; }
 
-footer {
-    text-align: center;
-    padding: 20px;
-    background: #eee;
-    font-size: 0.9em;
-    margin-top: 20px;
-}
+    /* Mobile menu button */
+    .menuBtn{
+      display:none;
+      width: 42px;
+      height: 42px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(203,222,211,.50);
+      color: var(--deep);
+      font-weight: 900;
+      font-size: 18px;
+      cursor: pointer;
+    }
 
-/* --- Форма контакта --- */
-.contact-form-section {
-    max-width: 600px;
-    margin: 0 auto 60px auto;
-}
+    /* Mobile drawer */
+    .menuOverlay{
+      position: fixed;
+      inset: 0;
+      background: rgba(47,47,47,.35);
+      z-index: 80;
+    }
+    .mobileMenu{
+      position: fixed;
+      top: 12px;
+      right: 12px;
+      left: 12px;
+      z-index: 90;
+      background: rgba(251,247,240,.96);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+    .mobileMenuHeader{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding: 14px 14px;
+      border-bottom: 1px solid var(--border);
+    }
+    .mobileMenuTitle{ font-weight: 900; color: var(--deep); }
+    .menuClose{
+      width: 38px; height: 38px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(203,222,211,.50);
+      color: var(--deep);
+      cursor: pointer;
+      font-weight: 900;
+    }
+    .mobileMenuItems{
+      display:flex;
+      flex-direction:column;
+      padding: 10px;
+      gap: 8px;
+    }
+    .menuItem{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      padding: 12px 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(59,98,85,.14);
+      background: rgba(203,222,211,.34);
+      color: rgba(47,47,47,.85);
+      font-weight: 800;
+    }
+    .menuItem:hover{ background: rgba(203,222,211,.55); }
+    .menuIcon{
+      width: 34px; height: 34px;
+      border-radius: 999px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      background: rgba(59,98,85,.10);
+      border: 1px solid rgba(59,98,85,.16);
+    }
 
-.contact-form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
+    /* Main / Sections */
+    main{ padding: 34px 0 110px; }
+    section{
+      margin: 0 0 18px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: rgba(251,247,240,.82);
+      box-shadow: var(--shadowSoft);
+      overflow:hidden;
+      scroll-margin-top: calc(var(--headerH) + 22px);
+    }
+    .sectionInner{ padding: 28px; }
 
-.contact-form label {
-    display: flex;
-    flex-direction: column;
-    font-weight: 600;
-}
+    /* HERO */
+    .heroWrap{
+      background:
+        radial-gradient(900px 520px at 92% 10%, rgba(203,222,211,.30), transparent 60%),
+        radial-gradient(900px 520px at 15% 20%, rgba(210,196,158,.30), transparent 60%),
+        rgba(251,247,240,.88);
+    }
+    .heroGrid{
+      display:grid;
+      grid-template-columns: 1.25fr .75fr;
+      gap: 22px;
+      align-items: stretch;
+    }
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(210,196,158,.38);
+      border: 1px solid rgba(210,196,158,.65);
+      color: rgba(47,47,47,.76);
+      font-size: 13px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+    h1{
+      margin: 0 0 12px;
+      font-size: clamp(34px, 4.2vw, 54px);
+      line-height: 1.05;
+      color: var(--deep);
+      letter-spacing: .2px;
+      font-weight: 900;
+    }
+    .heroSub{
+      margin: 0 0 18px;
+      font-size: 16px;
+      color: rgba(47,47,47,.76);
+      max-width: 70ch;
+    }
+    .heroActions{
+      display:flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 6px;
+    }
 
-.contact-form input {
-    padding: 10px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    font-size: 16px;
-    margin-top: 5px;
-}
+    img{ max-width:100%; height:auto; }
 
-.contact-form button {
-    padding: 12px;
-    background: #2a6;
-    border: none;
-    color: white;
-    border-radius: 10px;
-    font-size: 18px;
-    cursor: pointer;
-    transition: background 0.3s;
-}
+    .heroPhoto{
+      background: rgba(203,222,211,.26);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 14px;
+      height: 100%;
+      display:flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .photoBox{
+      width: 100%;
+      border-radius: 16px;
+      overflow:hidden;
+      border: 1px solid rgba(59,98,85,.18);
+      background: rgba(251,247,240,.92);
+      aspect-ratio: 4/3;
+    }
+    .photoBox img{
+      width:100%;
+      height:100%;
+      object-fit: cover;
+      display:block;
+    }
 
-.contact-form button:hover {
-    background: #1f4c3c;
-}
+    /* Accordion Sections */
+    .acc{ background: rgba(251,247,240,.82); }
+    .acc > summary{
+      cursor: pointer;
+      list-style: none;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 12px;
+      padding: 18px 20px;
+      color: var(--deep);
+      font-weight: 900;
+      font-size: 20px;
+      user-select: none;
+      background: rgba(251,247,240,.88);
+    }
+    .acc > summary::-webkit-details-marker{ display:none; }
+    .acc > summary .chev{
+      width: 36px; height: 36px;
+      border-radius: 999px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      background: rgba(59,98,85,.10);
+      border: 1px solid rgba(59,98,85,.16);
+      font-size: 18px;
+      flex: 0 0 auto;
+      transition: transform .15s ease;
+    }
+    .acc[open] > summary .chev{ transform: rotate(180deg); }
 
-/* --- Фото секция --- */
-.photo-section img {
-    width: 100%;
-    max-width: 400px;
-    display: block;
-    margin: 0 auto;
-    border-radius: 12px;
-    box-shadow: 0 3px 12px rgba(0,0,0,0.1);
-}
+    .accContent{
+      padding: 16px 20px 20px;
+      background: var(--boxBg);
+      border-top: 1px solid rgba(210,196,158,.50);
+    }
 
-/* --- Аккордеон услуги --- */
-.service-item {
-    border-bottom: 1px solid #ccc;
-    margin-bottom: 10px;
-}
+    .block{
+      background: rgba(251,247,240,.72);
+      border: 1px solid var(--boxBorder);
+      border-radius: 16px;
+      padding: 16px;
+      margin-top: 0;
+      color: rgba(47,47,47,.82);
+      font-size: 15px;
+    }
 
-.service-title {
-    cursor: pointer;
-    font-weight: 600;
-    padding: 10px 0;
-    position: relative;
-    color: #2a6;
-}
+    /* Cards */
+    .cards{
+      display:grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 0;
+    }
+    .card{
+      background: rgba(251,247,240,.72);
+      border: 1px solid var(--boxBorder);
+      border-radius: 16px;
+      padding: 16px;
+    }
+    .card strong{ color: var(--deep); font-size: 15px; display:block; margin-bottom: 6px; }
+    .card span{ color: rgba(47,47,47,.76); font-size: 14px; }
 
-.service-title::after {
-    content: '+';
-    position: absolute;
-    left: 0;
-    font-size: 20px;
-    transition: transform 0.3s;
-}
+    /* Steps with image beside text */
+    .steps{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin-top: 0;
+    }
+    .step{
+      background: rgba(251,247,240,.72);
+      border: 1px solid var(--boxBorder);
+      border-radius: 16px;
+      padding: 14px;
+      display:grid;
+      grid-template-columns: 170px 1fr;
+      gap: 14px;
+      align-items: center;
+    }
+    .stepImg{
+      width: 100%;
+      aspect-ratio: 4/3;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid rgba(59,98,85,.14);
+      background: rgba(203,222,211,.18);
+    }
+    .stepImg img{
+      width:100%;
+      height:100%;
+      object-fit: cover;
+      display:block;
+    }
+    .stepTitleRow{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 10px;
+      margin-bottom: 6px;
+    }
+    .stepNum{
+      width: 34px; height: 34px;
+      border-radius: 999px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      background: rgba(59,98,85,.12);
+      border: 1px solid rgba(59,98,85,.18);
+      color: var(--deep);
+      font-weight: 900;
+      flex: 0 0 auto;
+    }
+    .step h3{ margin:0; color: var(--deep); font-size: 16px; font-weight: 900; }
+    .step p{ margin:0; color: rgba(47,47,47,.76); font-size: 14px; }
 
-.service-title.active::after {
-    content: '-';
-}
+    /* About */
+    .aboutGrid{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 14px;
+      align-items: start;
+      margin-top: 0;
+    }
+    .aboutText{
+      background: rgba(251,247,240,.72);
+      border: 1px solid var(--boxBorder);
+      border-radius: 16px;
+      padding: 16px;
+      color: rgba(47,47,47,.82);
+      font-size: 15px;
+    }
+    .aboutText p{ margin: 0 0 10px; }
+    .aboutText p:last-child{ margin-bottom:0; }
+    .aboutFinal{
+      margin-top: 8px;
+      font-weight: 600;
+      color: rgba(47,47,47,.82);
+    }
 
-.service-desc {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.5s ease, padding 0.3s ease;
-    padding-left: 0;
-}
+    .aboutPhoto{
+      background: rgba(251,247,240,.72);
+      border: 1px solid var(--boxBorder);
+      border-radius: 16px;
+      padding: 12px;
+    }
+    .aboutPhoto .photoBox{ aspect-ratio: 4/5; }
+    .aboutPhoto .photoBox img{ object-fit: cover; }
 
-.service-desc p {
-    margin: 10px 0;
-}
+    /* FAQ */
+    .faq{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 0;
+      align-items: start;
+    }
+    .faq details{
+      align-self: start;
+      background: rgba(251,247,240,.72);
+      border: 1px solid var(--boxBorder);
+      border-radius: 16px;
+      padding: 14px 16px;
+    }
+    .faq summary{
+      cursor:pointer;
+      list-style:none;
+      font-weight: 900;
+      color: var(--deep);
+    }
+    .faq summary::-webkit-details-marker{ display:none; }
+    .faq details p{
+      margin: 10px 0 0;
+      color: rgba(47,47,47,.76);
+      font-size: 14px;
+    }
 
-.service-desc.show {
-    max-height: 300px;
-    padding-left: 10px;
-}
+    /* Sticky contact bar bottom */
+    .contactBar{
+      position: fixed;
+      right: 0;
+      left: 0;
+      bottom: 0;
+      z-index: 60;
+      background: rgba(251,247,240,.92);
+      border-top: 1px solid var(--border);
+      backdrop-filter: blur(10px);
+    }
+    .contactBarInner{
+      width:min(var(--max), calc(100% - 44px));
+      margin: 0 auto;
+      padding: 12px 0;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .contactMini{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      flex-wrap: wrap;
+      font-weight: 800;
+      color: rgba(47,47,47,.78);
+      font-size: 14px;
+    }
+    .miniChip{
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+      padding: 10px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(59,98,85,.14);
+      background: rgba(210,196,158,.18);
+      white-space: nowrap;
+    }
+    .miniIcon{
+      width: 30px; height: 30px;
+      border-radius: 999px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      background: rgba(139,164,154,.14);
+      border: 1px solid rgba(139,164,154,.45);
+      color: var(--sage);
+      flex: 0 0 auto;
+    }
+    .miniIcon svg{ width: 16px; height: 16px; }
 
-/* --- Аккордеон Q&A --- */
-.faq-item {
-    border-bottom: 1px solid #ccc;
-    margin-bottom: 10px;
-}
+    footer{
+      text-align:center;
+      padding: 18px 0 6px;
+      color: rgba(47,47,47,.66);
+      font-size: 13px;
+    }
 
-.faq-question {
-    cursor: pointer;
-    font-weight: 600;
-    padding: 10px 0;
-    position: relative;
-}
-
-.faq-question::after {
-    content: '+';
-    position: absolute;
-    left: 0;
-    font-size: 20px;
-    transition: transform 0.3s;
-}
-
-.faq-question.active::after {
-    content: '-';
-}
-
-.faq-answer {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.5s ease, padding 0.3s ease;
-    padding-left: 0;
-}
-
-.faq-answer p {
-    margin: 10px 0;
-}
-
-.faq-answer.show {
-    max-height: 500px;
-    padding-left: 10px;
-}
-
-/* --- Аккордеон "Обо мне" --- */
-.about-item {
-    border-bottom: 1px solid #ccc;
-    margin-bottom: 10px;
-}
-
-.about-title {
-    cursor: pointer;
-    font-weight: 600;
-    padding: 10px 0;
-    position: relative;
-    color: #2a6;
-}
-
-.about-title::after {
-    content: '+';
-    position: absolute;
-    left: 0;
-    font-size: 20px;
-    transition: transform 0.3s;
-}
-
-.about-title.active::after {
-    content: '-';
-}
-
-.about-desc {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.5s ease, padding 0.3s ease;
-    padding-left: 0;
-}
-
-.about-desc p {
-    margin: 10px 0;
-}
-
-.about-desc.show {
-    max-height: 300px;
-    padding-left: 10px;
-}
-</style>
+    /* Responsive */
+    @media (max-width: 980px){
+      .heroGrid{ grid-template-columns: 1fr; }
+      .aboutGrid{ grid-template-columns: 1fr; }
+      .sectionInner{ padding: 24px; }
+      .step{ grid-template-columns: 1fr; }
+      .stepImg{ aspect-ratio: 16/9; }
+    }
+    @media (max-width: 860px){
+      .desktopNav{ display:none; }
+      .menuBtn{ display:inline-flex; align-items:center; justify-content:center; }
+      .cards{ grid-template-columns: 1fr; }
+      .faq{ grid-template-columns: 1fr; }
+      .brand, .navActions{ min-width: unset; }
+      main{ padding-top: 26px; }
+    }
+  </style>
 </head>
+
 <body>
+  <header>
+    <div class="container">
+      <div class="nav">
+        <div class="brand">
+          <div class="brandText">
+            <strong>רוני פפוביאן</strong>
+            <span>אוסטאופתית D.O</span>
+          </div>
+        </div>
 
-<header>
-    <h1>רוני פפוביאן</h1>
-    <p>אוסטאופתית D.O</p>
-</header>
+        <nav class="desktopNav" aria-label="ניווט ראשי">
+          <ul>
+            <li><a class="navLink" href="#osteopathy">מה זה אוסטאופתיה</a></li>
+            <li><a class="navLink" href="#forwho">למי זה מתאים</a></li>
+            <li><a class="navLink" href="#process">שלבי הטיפול</a></li>
+            <li><a class="navLink" href="#about">מי אני</a></li>
+            <li><a class="navLink" href="#faq">שאלות נפוצות</a></li>
+            <li><a class="navLink" href="#contactAnchor">יצירת קשר</a></li>
+          </ul>
+        </nav>
 
-<main>
+        <button class="menuBtn" id="menuBtn" aria-label="פתח תפריט" aria-expanded="false" aria-controls="mobileMenu">☰</button>
 
-    <!-- Фото -->
-    <section class="fade photo-section">
-        <img src="RonyPapovian.jpeg" alt="רוני פפוביאן">
+        <div class="navActions">
+          <a class="btn navLink" href="#contactAnchor">דברו איתי</a>
+          <a class="btn primary" href="https://wa.me/972545768495" target="_blank" rel="noopener">WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Menu Drawer -->
+  <div class="menuOverlay" id="menuOverlay" hidden></div>
+
+  <div class="mobileMenu" id="mobileMenu" hidden role="dialog" aria-modal="true" aria-label="תפריט ניווט">
+    <div class="mobileMenuHeader">
+      <div class="mobileMenuTitle">ניווט</div>
+      <button class="menuClose" id="menuClose" aria-label="סגור תפריט">✕</button>
+    </div>
+
+    <div class="mobileMenuItems">
+      <a class="menuItem navLink" href="#osteopathy" data-close-menu><span class="menuIcon">🌿</span><span>מה זה אוסטאופתיה</span></a>
+      <a class="menuItem navLink" href="#forwho" data-close-menu><span class="menuIcon">🎯</span><span>למי זה מתאים</span></a>
+      <a class="menuItem navLink" href="#process" data-close-menu><span class="menuIcon">🧭</span><span>שלבי הטיפול</span></a>
+      <a class="menuItem navLink" href="#about" data-close-menu><span class="menuIcon">👤</span><span>מי אני</span></a>
+      <a class="menuItem navLink" href="#faq" data-close-menu><span class="menuIcon">❓</span><span>שאלות נפוצות</span></a>
+      <a class="menuItem navLink" href="#contactAnchor" data-close-menu><span class="menuIcon">📞</span><span>יצירת קשר</span></a>
+    </div>
+  </div>
+
+  <main class="container">
+
+    <!-- HERO -->
+    <section class="heroWrap" id="top">
+      <div class="sectionInner">
+        <div class="heroGrid">
+          <div class="heroText">
+            <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-bottom:14px;">
+              <span class="pill">אוסטאופתיה נהריה</span>
+              <span class="pill">טיפול מנואלי עדין</span>
+            </div>
+
+            <h1>טיפול אוסטאופתי, חזרה לאיזון ונוחות בגוף.</h1>
+
+            <p class="heroSub">
+              אוסטאופתיה היא שיטת טיפול מנואלית המתבוננת בגוף כמערכת אחת שלמה.
+              באמצעות אבחון מדויק ומגע עדין, הטיפול פועל לשיפור התנועה, להפחתת עומסים ולהחזרת הגוף לאיזון.
+            </p>
+
+            <div class="heroActions">
+              <a class="btn primary navLink" href="#contactAnchor">לקביעת טיפול</a>
+              <a class="btn" href="tel:+972545768495">חיוג</a>
+            </div>
+          </div>
+
+          <aside class="heroPhoto" aria-label="תמונה טיפולית">
+            <div class="photoBox">
+              <img src="header.jpg" alt="טיפול אוסטאופתי" loading="eager" decoding="async">
+            </div>
+          </aside>
+        </div>
+      </div>
     </section>
 
-    <!-- Аккордеон услуги -->
-    <section class="fade">
-        <h2>השירותים שלנו</h2>
-
-        <div class="service-item">
-            <div class="service-title">טיפול בכאבי גב</div>
-            <div class="service-desc">
-                <p>טיפול מותאם אישית לכאבי גב תחתון, עליון ואמצעי, תוך שימוש בטכניקות אוסטאופתיות עדינות לשחרור השרירים ולשיפור תנועתיות.</p>
-            </div>
+    <!-- What is osteopathy -->
+    <section>
+      <!-- removed open so it won't open on page load -->
+      <details class="acc" id="osteopathy">
+        <summary>
+          <div>מה זה אוסטאופתיה?</div>
+          <span class="chev">⌄</span>
+        </summary>
+        <div class="accContent">
+          <div class="block">
+            <p style="margin:0 0 10px;">
+              אוסטאופתיה היא גישת טיפול פרא-רפואית, מנואלית (ידנית) המתבוננת בגוף כמערכת אחת שלמה.
+              הגישה האוסטאופתית מחפשת להבין את הקשר בין מבנה, תנועה ותפקוד, ולאתר עומסים או מגבלות שיכולים להשפיע על כאב ותחושה כללית בגוף.
+            </p>
+            <p style="margin:0;">
+              הטיפול מבוסס על ידע קליני רחב באנטומיה, פיזיולוגיה, פתולוגיות וביומכניקה, וכולל אבחון מעמיק וטיפול מנואלי עדין ומדויק,
+              במטרה לשפר תפקוד תנועתי, להפחית עומסים ולתמוך במנגנוני הריפוי הטבעיים של הגוף.
+            </p>
+          </div>
         </div>
-
-        <div class="service-item">
-            <div class="service-title">טיפול בכאבי צוואר וכתפיים</div>
-            <div class="service-desc">
-                <p>טיפול שמקל על כאבים באזור הצוואר והכתפיים, משפר טווח תנועה ומפחית מתח בשרירים בעקבות ישיבה ממושכת או עומס יומיומי.</p>
-            </div>
-        </div>
-
-        <div class="service-item">
-            <div class="service-title">טיפול בשרירים תפוסים</div>
-            <div class="service-desc">
-                <p>עיסוי אוסטאופתי ושחרור שרירים תפוסים, מניעת הצטברות מתח ושיפור זרימת הדם לאזורים בעייתיים.</p>
-            </div>
-        </div>
-
-        <div class="service-item">
-            <div class="service-title">ייעוץ והכוונה אישית</div>
-            <div class="service-desc">
-                <p>מתן הנחיות אישיות לאורח חיים, תרגילים ייעודיים למניעת כאבים וחיזוק הגוף לאחר טיפול.</p>
-            </div>
-        </div>
+      </details>
     </section>
 
-    <!-- Q&A -->
-    <section class="fade">
-        <h2>שאלות ותשובות</h2>
-
-        <div class="faq-item">
-            <div class="faq-question">כמה זמן נמשך טיפול אוסטאופתי?</div>
-            <div class="faq-answer">
-                <p>בדרך כלל טיפול אוסטאופתי נמשך בין 45 ל-60 דקות בהתאם לצורך המטופל.</p>
+    <!-- For who -->
+    <section>
+      <details class="acc" id="forwho">
+        <summary>
+          <div>למי זה מתאים?</div>
+          <span class="chev">⌄</span>
+        </summary>
+        <div class="accContent">
+          <div class="cards">
+            <div class="card">
+              <strong>כאבים במערכת השלד-שריר</strong>
+              <span>גב, צוואר, כתפיים, ברכיים ועוד</span>
             </div>
-        </div>
 
-        <div class="faq-item">
-            <div class="faq-question">האם טיפול כואב?</div>
-            <div class="faq-answer">
-                <p>טיפולים הם בדרך כלל לא כואבים. יתכן מעט חוסר נוחות קלה במקרים מסוימים.</p>
+            <div class="card">
+              <strong>כאבי ראש, לסת ועומס צווארי</strong>
+              <span>מיגרנות, כאב ראש ממקור צווארי, כאבים בלסת</span>
             </div>
-        </div>
 
-        <div class="faq-item">
-            <div class="faq-question">כמה טיפולים נדרשים?</div>
-            <div class="faq-answer">
-                <p>מספר הטיפולים משתנה לפי מצב המטופל והבעיה הבריאותית. בדרך כלל מומלץ סדרה של 4-6 טיפולים.</p>
+            <div class="card">
+              <strong>בעיות במערכת העיכול</strong>
+              <span>נפיחות, עצירות, תפקוד ירוד</span>
             </div>
+
+            <div class="card">
+              <strong>נוקשות או מגבלות בטווחי תנועה</strong>
+              <span>תחושה של “לא מצליח/ה לזוז כמו פעם”</span>
+            </div>
+
+            <div class="card">
+              <strong>חוסר איזון פיזי, עייפות או תחושת תקיעות</strong>
+              <span>כשהגוף מרגיש כבד או לא נינוח</span>
+            </div>
+
+            <div class="card">
+              <strong>תמיכה בתקופות רגישות</strong>
+              <span>סטרס, הריון, לידה והתאוששות</span>
+            </div>
+
+            <div class="card">
+              <strong>תינוקות</strong>
+              <span>טיפול עדין, מתאים לקשיי הנקה, העדפת צד, רפלוקס, חוסר שקט ועוד</span>
+            </div>
+          </div>
         </div>
+      </details>
     </section>
 
-    <!-- Раздел "Обо мне" -->
-    <section class="fade">
-        <h2>אודותי</h2>
+    <!-- Process -->
+    <section>
+      <details class="acc" id="process">
+        <summary>
+          <div>שלבי הטיפול האוסטאופתי</div>
+          <span class="chev">⌄</span>
+        </summary>
+        <div class="accContent">
+          <div class="steps">
 
-        <div class="about-item">
-            <div class="about-title">מי אני?</div>
-            <div class="about-desc">
-                <p>שמי רוני פפוביאן, אוסטאופתית מוסמכת עם ניסיון של מעל 10 שנים בתחום. אני מתמחה בטיפול בכאבי גב, צוואר ושרירים תפוסים.</p>
+            <div class="step">
+              <div class="stepImg">
+                <img src="step-intake.jpg" alt="תשאול" loading="lazy" decoding="async">
+              </div>
+              <div>
+                <div class="stepTitleRow">
+                  <h3>תשאול</h3>
+                  <span class="stepNum">1</span>
+                </div>
+                <p>
+                  נתחיל בשיחה מעמיקה על התלונה, ההיסטוריה הרפואית, אורח החיים ודפוסי תנועה
+                  כדי להבין את התמונה המלאה ולחפש את שורש הבעיה
+                </p>
+              </div>
             </div>
-        </div>
 
-        <div class="about-item">
-            <div class="about-title">הגישה שלי לטיפול</div>
-            <div class="about-desc">
-                <p>אני מאמינה בטיפול מותאם אישית, המתבסס על אבחון מקצועי, טכניקות עדינות והקשבה מלאה לצרכי המטופל.</p>
+            <div class="step">
+              <div class="stepImg">
+                <img src="step-tests.jpg" alt="בדיקות" loading="lazy" decoding="async">
+              </div>
+              <div>
+                <div class="stepTitleRow">
+                  <h3>בדיקות</h3>
+                  <span class="stepNum">2</span>
+                </div>
+                <p>
+                  נבצע בדיקה אוסטאופתית הכוללת הסתכלות על היציבה, מישוש הרקמות, בדיקות תנועה,
+                  ובמידת הצורך בדיקות נוירולוגיות ואורתופדיות
+                </p>
+              </div>
             </div>
-        </div>
 
-        <div class="about-item">
-            <div class="about-title">למה לבחור בי?</div>
-            <div class="about-desc">
-                <p>אני משלבת ידע מקצועי רחב עם יחס אישי וחם, תוך דגש על תוצאות מוכחות ושיפור איכות החיים של המטופלים שלי.</p>
+            <div class="step">
+              <div class="stepImg">
+                <img src="step-treatment.jpg" alt="טיפול" loading="lazy" decoding="async">
+              </div>
+              <div>
+                <div class="stepTitleRow">
+                  <h3>טיפול</h3>
+                  <span class="stepNum">3</span>
+                </div>
+                <p>
+                  הטיפול משלב מגע עדין ומדויק וטכניקות שונות כגון רקמה רכה, מוביליזציות ומניפולציות
+                  במטרה לשפר תנועה, להפחית עומסים, לתמוך במערכת העצבים ולחזק את מנגנוני הריפוי הטבעיים של הגוף
+                </p>
+              </div>
             </div>
+
+          </div>
         </div>
+      </details>
     </section>
 
-    <!-- Контакты -->
-    <section class="fade">
-        <h2>צור קשר</h2>
-        <p>טלפון: 054-5768495</p>
-        <p>אימייל: laky.rony@gmail.com</p>
-        <a class="button" href="mailto:laky.rony@gmail.com">שלח מייל</a>
+    <!-- About -->
+    <section>
+      <details class="acc" id="about">
+        <summary>
+          <div>מי אני?</div>
+          <span class="chev">⌄</span>
+        </summary>
+        <div class="accContent">
+          <div class="aboutGrid">
+            <div class="aboutText">
+              <p>
+                נעים מאוד, אני רוני פפוביאן אוסטאופתית מוסמכת D.O מאז ומתמיד עסקתי והתעניינתי בגוף ובתנועה.
+                הייתי מאמנת כוח וקרוספיט, וליוויתי מאות מתאמנים לאורך הדרך.
+                במפגש עם אנשים שהתמודדו עם מגבלות, עומסים וכאב, הבנתי שלמרות הידע והניסיון שצברתי — לא תמיד יש בידי את הכלים המדויקים לעזור באמת.
+                מתוך המקום הזה נולד הרצון להעמיק, להבין את הגוף לעומק, ולרכוש כלים טיפוליים רחבים ומדויקים יותר — וכך הגעתי ללימודי האוסטאופתיה.
+              </p>
+
+              <p>
+                במהלך חמש שנות לימוד צללתי לעולמות האנטומיה, הפיזיולוגיה והפתולוגיה, לצד עבודה קלינית מגוונת.
+                הלימודים הקנו לי ראייה רחבה של גוף האדם כמכלול - גוף תנועה ונפש ועיצבו את דרכי כמטפלת: הקשבה עמוקה, רגישות, דיוק וסבלנות לכל אדם שמגיע אליי.
+              </p>
+
+              <p>
+                אני מאמינה שטיפול טוב מתחיל בסקרנות והקשבה למטופל, וממשיך במגע עדין ומדויק.
+                מניסיון אישי אני יודעת עד כמה כאב יכול להשפיע על היומיום, על התנועה, ועל איכות החיים - וכמה קשה לחיות בגוף שלא מרגיש נוח.
+                המטרה שלי היא לעזור לאנשים להרגיש בטוחים יותר בגופם, לנוע בחופשיות רבה יותר, ולהחזיר תחושת איזון ונינוחות לחיים.
+              </p>
+
+              <p class="aboutFinal">
+                הגוף הוא הבית שאנחנו חיים בו כל החיים.<br>
+                לדאוג לו בזמן — זו לא מותרות, זו אחריות 🌿
+              </p>
+            </div>
+
+            <div class="aboutPhoto">
+              <div class="photoBox">
+                <img src="about.jpg" alt="רוני פפוביאן" loading="lazy" decoding="async">
+              </div>
+            </div>
+          </div>
+        </div>
+      </details>
     </section>
 
-    <!-- Быстрая запись -->
-    <section class="fade">
-        <h2>זימון תור מהיר</h2>
-        <p>לחץ על הכפתור למעבר למערכת התורים:</p>
-        <a class="button" href="https://plannieapp.com/?name=רוניפפוביאן" target="_blank">זימון תור בקליק</a>
+    <!-- FAQ -->
+    <section>
+      <details class="acc" id="faq">
+        <summary>
+          <div>שאלות נפוצות</div>
+          <span class="chev">⌄</span>
+        </summary>
+        <div class="accContent">
+          <div class="faq">
+            <details>
+              <summary>כמה זמן נמשך טיפול?</summary>
+              <p>טיפול ראשון אורך כשעה וכולל תשאול, בדיקות וטיפול. טיפול המשך אורכים כ-45-50 דק'.</p>
+            </details>
+
+            <details>
+              <summary>האם הטיפול כואב?</summary>
+              <p>רוב העבודה היא עדינה ומותאמת אלייך. לפעמים יש רגישות נקודתית, אבל המטרה היא לעבוד בתוך גבולות שנוחים לך, ולצאת מהטיפול בתחושה טובה ובטוחה.</p>
+            </details>
+
+            <details>
+              <summary>כמה טיפולים צריך?</summary>
+              <p>אין מספר “קבוע”. זה תלוי באופי הבעיה, כמה זמן היא קיימת, ומה הגוף צריך. בדרך כלל נרצה לראות שינוי תוך כמה מפגשים ואז נדייק את ההמשך.</p>
+            </details>
+
+            <details>
+              <summary>מה כדאי להביא / איך מגיעים לטיפול?</summary>
+              <p>מומלץ להגיע בבגדים נוחים שיאפשרו לזוז בהם. אם יש בדיקות/הדמיות רלוונטיות — אפשר להביא. מעבר לזה, פשוט להגיע כמו שאת/ה.</p>
+            </details>
+
+            <details>
+              <summary>כל כמה זמן מומלץ להגיע?</summary>
+              <p>בתחילת תהליך לפעמים נרצה מרווח קצר יותר בין מפגשים, ובהמשך מרווח גדול יותר כדי לשמר תוצאות. ההמלצה תמיד תהיה אישית ובהתאם למה שהגוף מראה.</p>
+            </details>
+
+            <details>
+              <summary>האם אפשר לשלב טיפול גם בהריון / אחרי לידה?</summary>
+              <p>כן — הטיפול מותאם לשלב ולצרכים של התקופה, בדגש על עדינות ובטיחות. אם יש משהו שדורש בירור רפואי — אני אגיד ואכוון בהתאם.</p>
+            </details>
+          </div>
+        </div>
+      </details>
     </section>
 
-    <!-- Форма WhatsApp -->
-    <section class="fade contact-form-section">
-        <h2>השאירו פרטים ואחזור אליכם בהקדם</h2>
-        <form id="waForm" class="contact-form">
-            <label>
-                שם מלא:
-                <input type="text" id="waName" required>
-            </label>
-            <label>
-                טלפון:
-                <input type="tel" id="waPhone" required>
-            </label>
-            <label>
-                מייל:
-                <input type="email" id="waEmail" required>
-            </label>
-            <button type="button" onclick="sendToWA()">שלח בוואטסאפ</button>
-        </form>
-    </section>
+    <div id="contactAnchor"></div>
 
-</main>
+    <footer>
+      &copy; 2026 רוני פפוביאן — כל הזכויות שמורות
+    </footer>
 
-<footer>
-    &copy; 2025 כל הזכויות שמורות
-</footer>
+  </main>
 
-<script>
-// Анимация при скролле
-const sections = document.querySelectorAll('section.fade');
-const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-        }
+  <!-- Sticky Contact Bar -->
+  <div class="contactBar" id="contact">
+    <div class="contactBarInner">
+
+      <div class="contactMini">
+        <span class="miniChip">
+          <span class="miniIcon" aria-hidden="true">
+            <!-- phone -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.86 19.86 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.86 19.86 0 0 1 2.08 4.18 2 2 0 0 1 4.06 2h3a2 2 0 0 1 2 1.72c.12.86.3 1.7.54 2.5a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.58-1.06a2 2 0 0 1 2.11-.45c.8.24 1.64.42 2.5.54A2 2 0 0 1 22 16.92z"/>
+            </svg>
+          </span>
+          טלפון: <a href="tel:+972545768495" style="font-weight:900; color:var(--deep);">0545768495</a>
+        </span>
+
+        <span class="miniChip">
+          <span class="miniIcon" aria-hidden="true">📍</span>
+          חיים לבב 21, נהריה
+        </span>
+      </div>
+
+      <div style="display:flex; gap:10px; flex-wrap:wrap;">
+        <a class="btn primary" href="https://wa.me/972545768495" target="_blank" rel="noopener">WhatsApp</a>
+        <a class="btn" href="https://www.instagram.com/rony_papovian/" target="_blank" rel="noopener">Instagram</a>
+        <a class="btn" href="https://www.facebook.com/Rony.papovian" target="_blank" rel="noopener">Facebook</a>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    // Mobile menu open/close
+    const menuBtn = document.getElementById('menuBtn');
+    const menuOverlay = document.getElementById('menuOverlay');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const menuClose = document.getElementById('menuClose');
+
+    function openMenu(){
+      menuOverlay.hidden = false;
+      mobileMenu.hidden = false;
+      menuBtn.setAttribute('aria-expanded','true');
+    }
+    function closeMenu(){
+      menuOverlay.hidden = true;
+      mobileMenu.hidden = true;
+      menuBtn.setAttribute('aria-expanded','false');
+    }
+
+    menuBtn?.addEventListener('click', openMenu);
+    menuClose?.addEventListener('click', closeMenu);
+    menuOverlay?.addEventListener('click', closeMenu);
+
+    function openIfDetails(el){
+      if (!el) return;
+      if (el.tagName && el.tagName.toLowerCase() === 'details') {
+        el.open = true;
+      }
+    }
+
+    function smoothScrollTo(el){
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      });
+    }
+
+    // Smooth scroll + open accordion section + close mobile menu
+    document.querySelectorAll('a.navLink').forEach(a => {
+      a.addEventListener('click', (e) => {
+        const href = a.getAttribute('href');
+        if (!href || !href.startsWith('#')) return;
+
+        const el = document.querySelector(href);
+        if (!el) return;
+
+        e.preventDefault();
+
+        // open section if it's a details accordion
+        openIfDetails(el);
+
+        // if anchor points to a div inside a details, open its nearest details
+        const parentDetails = el.closest && el.closest('details');
+        if (parentDetails) parentDetails.open = true;
+
+        smoothScrollTo(el);
+
+        if (a.hasAttribute('data-close-menu')) closeMenu();
+      });
     });
-}, { threshold: 0.2 });
-sections.forEach(section => observer.observe(section));
-
-// WhatsApp функция
-function sendToWA() {
-    const name = document.getElementById("waName").value;
-    const phone = document.getElementById("waPhone").value;
-    const email = document.getElementById("waEmail").value;
-    const message = `שם: ${name}\nטלפון: ${phone}\nמייל: ${email}`;
-    const waNumber = "972545768495"; // замените на ваш номер
-    const url = `https://wa.me/${waNumber}?text=${encodeURIComponent(message)}`;
-    window.open(url, "_blank");
-}
-
-// Q&A аккордеон
-const faqQuestions = document.querySelectorAll('.faq-question');
-faqQuestions.forEach(q => {
-    q.addEventListener('click', () => {
-        q.classList.toggle('active');
-        const answer = q.nextElementSibling;
-        answer.classList.toggle('show');
-    });
-});
-
-// Сервисный аккордеон
-const serviceTitles = document.querySelectorAll('.service-title');
-serviceTitles.forEach(title => {
-    title.addEventListener('click', () => {
-        title.classList.toggle('active');
-        const desc = title.nextElementSibling;
-        desc.classList.toggle('show');
-    });
-});
-
-// "Обо мне" аккордеон
-const aboutTitles = document.querySelectorAll('.about-title');
-aboutTitles.forEach(title => {
-    title.addEventListener('click', () => {
-        title.classList.toggle('active');
-        const desc = title.nextElementSibling;
-        desc.classList.toggle('show');
-    });
-});
-</script>
-
+  </script>
 </body>
 </html>
