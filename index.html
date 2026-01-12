@@ -77,20 +77,60 @@
       min-width: 260px;
     }
 
+    /* ===== LOGO (fixed: not dark) ===== */
+    .brandLogo{
+      width: 108px;
+      height: 108px;
+      border-radius: 0;
+      overflow: visible;
+      border: none;
+      background: transparent;
+      flex: 0 0 auto;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+
+      opacity: .98;              /* שקיפות קלה, בלי להכהות */
+      mix-blend-mode: normal;     /* הכי חשוב: לא ממזג צבעים */
+      filter: none;               /* בלי פילטרים */
+    }
+    .brandLogo img{
+      width: 108px;
+      height: 108px;
+      object-fit: contain;
+      display:block;
+      background: transparent;
+      image-rendering: auto;
+      transform: translateZ(0);
+    }
+    @media (max-width: 860px){
+      .brandLogo{ width: 84px; height: 84px; }
+      .brandLogo img{ width: 84px; height: 84px; }
+    }
+    /* ================================== */
+
     .brandText{ display:flex; flex-direction:column; gap:2px; }
+
+    /* ===== Text slightly smaller (only change) ===== */
     .brandText strong{
-      font-size: 22px;
+      font-size: 22px;            /* היה 24 */
       letter-spacing: .2px;
       color: var(--deep);
       font-weight: 900;
       line-height: 1.1;
     }
     .brandText span{
-      font-size: 17px;
+      font-size: 17px;            /* היה 18 */
       color: rgba(47,47,47,.78);
       font-weight: 800;
       line-height: 1.1;
     }
+    /* Mobile stays consistent */
+    @media (max-width: 860px){
+      .brandText strong{ font-size: 20px; }  /* היה 22 */
+      .brandText span{ font-size: 16px; }    /* היה 17 */
+    }
+    /* ============================================== */
 
     /* Desktop nav */
     .desktopNav{ flex: 1; min-width: 0; }
@@ -566,8 +606,6 @@
       .faq{ grid-template-columns: 1fr; }
       .brand, .navActions{ min-width: unset; }
       main{ padding-top: 26px; }
-      .brandText strong{ font-size: 20px; }
-      .brandText span{ font-size: 16px; }
     }
   </style>
 </head>
@@ -577,6 +615,10 @@
     <div class="container">
       <div class="nav">
         <div class="brand">
+          <div class="brandLogo" aria-label="לוגו">
+            <img src="logo.png" alt="RONY logo" loading="eager" decoding="async">
+          </div>
+
           <div class="brandText">
             <strong>רוני פפוביאן</strong>
             <span>אוסטאופתית D.O</span>
