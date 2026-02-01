@@ -4,41 +4,45 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>רוני פפוביאן | אוסטאופתית D.O</title>
-  <meta name="description" content="אוסטאופתיה בנהריה — טיפול מנואלי עדין ומותאם אישית. אבחון מעמיק, בדיקות וטיפול להקלה בכאב ושיפור תפקוד." />
+  <title>רוני פפוביאן - אוסטאופתיה נהריה | טיפול בכאב ושיקום</title>
+  <meta name="description" content="אוסטאופתיה בנהריה אצל רוני פפוביאן. טיפול מנואלי עדין, אבחון מעמיק והקלה בכאבי גב, צוואר ומפרקים." />
+
+  <meta property="og:title" content="רוני פפוביאן - אוסטאופתיה נהריה | טיפול בכאב ושיקום" />
+  <meta property="og:description" content="סובלים מכאבי גב או צוואר? בואו נחזיר לגוף את התנועה. טיפול מנואלי עדין ומדויק בקליניקה בנהריה." />
+  <meta property="og:image" content="https://ronyosteopathy.com/logo.png" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="he_IL" />
+
+  <link rel="icon" type="image/png" href="logo.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
   <style>
     :root{
-      /* Palette */
       --mint:#CBDED3;
       --sage:#8BA49A;
       --sand:#D2C49E;
       --deep:#3B6255;
-
       --cream:#FBF7F0;
       --text:#2F2F2F;
-
       --border: rgba(59,98,85,.18);
       --shadowSoft: 0 10px 30px rgba(47,47,47,.08);
-      --shadow: 0 16px 40px rgba(47,47,47,.10);
       --radius: 18px;
       --max: 1120px;
-
-      /* Unified accordion content color */
       --boxBg: rgba(210,196,158,.18);
       --boxBorder: rgba(210,196,158,.60);
-
-      --headerH: 78px;
+      --headerH: 90px;
+      --accent: #c48f57;
     }
 
     *{ box-sizing:border-box; }
     html,body{ margin:0; padding:0; }
     body{
-      font-family: "Heebo", system-ui, -apple-system, Segoe UI, Arial, sans-serif;
+      font-family: "Heebo", sans-serif;
       color: var(--text);
       line-height: 1.7;
       background:
@@ -47,627 +51,228 @@
         var(--cream);
       scroll-behavior:smooth;
       overflow-x:hidden;
+      padding-top: var(--headerH);
     }
+    
+    /* הגדרת מרווח גלילה ב-CSS כגיבוי */
+    section, details { scroll-margin-top: 130px; }
+
+    /* נגישות: כפתור דילוג לתוכן (מוסתר כברירת מחדל) */
+    .skip-link { 
+      position: absolute; 
+      top: -100px; 
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--deep); 
+      color: #fff; 
+      padding: 10px 20px; 
+      z-index: 10001; 
+      transition: top 0.3s;
+      border-radius: 0 0 10px 10px;
+      font-weight: bold;
+    }
+    .skip-link:focus { top: 0; }
+
+    a:focus, button:focus, summary:focus, input:focus { outline: 3px solid var(--deep); outline-offset: 2px; }
+    [hidden] { display: none !important; }
 
     a{ color:inherit; text-decoration:none; }
-    .container{ width:min(var(--max), calc(100% - 44px)); margin:0 auto; }
+    .container{ width:min(var(--max), calc(100% - 30px)); margin:0 auto; }
 
     /* Header */
     header{
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      backdrop-filter: blur(10px);
-      background: rgba(251,247,240,.82);
-      border-bottom: 1px solid var(--border);
+      position: fixed; top: 0; right: 0; left: 0; z-index: 1000;
+      background: rgba(251,247,240, 0.98); backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border); width: 100%; height: var(--headerH);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.03); display: flex; align-items: center;
     }
-    .nav{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap: 12px;
-      padding: 12px 0;
-      min-height: var(--headerH);
-    }
+    
+    .nav{ display:flex; align-items:center; justify-content:space-between; gap: 15px; width: 100%; }
+    .brand{ display:flex; align-items:center; gap: 12px; flex-shrink: 0; }
+    .logoImg { height: 60px; width: auto; max-width: 180px; object-fit: contain; display: block; }
+    .divider-vertical { height: 35px; width: 1px; background-color: rgba(59,98,85, 0.2); margin: 0 5px; }
+    .brandText { display: flex; flex-direction: column; line-height: 1.2; }
+    .brandText strong{ font-size: 19px; color: var(--deep); font-weight: 900; }
+    .brandText span{ font-size: 14px; color: var(--sage); font-weight: 700; letter-spacing: 0.5px; }
 
-    .brand{
-      display:flex;
-      align-items:center;
-      gap: 12px;
-      min-width: 260px;
-    }
+    .desktopNav{ flex: 1; display:flex; align-items: center; justify-content: center; } 
+    .desktopNav ul{ list-style:none; margin:0; padding:0; display:flex; gap: 5px; flex-wrap: nowrap; align-items:center; }
+    .desktopNav a{ padding: 8px 12px; border-radius: 999px; font-size: 15px; color: rgba(47,47,47,.9); font-weight: 700; transition: all .2s ease; white-space: nowrap; }
+    .desktopNav a:hover{ background: rgba(203,222,211,.45); color: var(--deep); }
 
-    /* ===== LOGO (fixed: not dark) ===== */
-    .brandLogo{
-      width: 108px;
-      height: 108px;
-      border-radius: 0;
-      overflow: visible;
-      border: none;
-      background: transparent;
-      flex: 0 0 auto;
-      display:flex;
-      align-items:center;
-      justify-content:center;
+    .navActions{ display:flex; gap: 8px; align-items:center; justify-content:flex-end; flex-shrink: 0; }
+    .btn{ display:inline-flex; align-items:center; justify-content:center; gap: 6px; padding: 8px 14px; border-radius: 999px; border: 1px solid var(--border); background: rgba(203,222,211,.50); color: var(--deep); font-weight: 800; font-size: 14px; cursor:pointer; transition: all .2s ease; white-space:nowrap; }
+    span.btn { cursor: default; }
+    .btn:hover{ transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+    .btn.primary{ background: var(--deep); color:#fff; }
+    .btn.cta-highlight { background-color: var(--accent); color: white; border: none; padding: 12px 28px; font-size: 16px; box-shadow: 0 4px 15px rgba(196, 143, 87, 0.3); }
 
-      opacity: .98;              /* שקיפות קלה, בלי להכהות */
-      mix-blend-mode: normal;     /* הכי חשוב: לא ממזג צבעים */
-      filter: none;               /* בלי פילטרים */
-    }
-    .brandLogo img{
-      width: 108px;
-      height: 108px;
-      object-fit: contain;
-      display:block;
-      background: transparent;
-      image-rendering: auto;
-      transform: translateZ(0);
-    }
-    @media (max-width: 860px){
-      .brandLogo{ width: 84px; height: 84px; }
-      .brandLogo img{ width: 84px; height: 84px; }
-    }
-    /* ================================== */
+    .menuBtn { display: none; justify-content: center; align-items: center; padding: 0; padding-bottom: 2px; width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--border); background: #fff; color: var(--deep); font-weight: 900; font-size: 20px; cursor: pointer; }
+    .menuOverlay{ position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 150; }
+    .mobileMenu{ position: fixed; top: 12px; right: 12px; left: 12px; z-index: 200; background: #fff; border-radius: 18px; padding: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.2); display: flex; flex-direction: column; gap: 10px; }
+    .menuClose{ position: absolute; top: 15px; left: 15px; background: none; border: none; font-size: 24px; cursor: pointer; color: var(--deep); }
+    .mobileMenuItem { padding: 12px; background: var(--cream); border-radius: 12px; font-weight: 700; color: var(--deep); text-decoration:none; display:block; }
 
-    .brandText{ display:flex; flex-direction:column; gap:2px; }
-
-    /* ===== Text slightly smaller (only change) ===== */
-    .brandText strong{
-      font-size: 22px;            /* היה 24 */
-      letter-spacing: .2px;
-      color: var(--deep);
-      font-weight: 900;
-      line-height: 1.1;
-    }
-    .brandText span{
-      font-size: 17px;            /* היה 18 */
-      color: rgba(47,47,47,.78);
-      font-weight: 800;
-      line-height: 1.1;
-    }
-    /* Mobile stays consistent */
-    @media (max-width: 860px){
-      .brandText strong{ font-size: 20px; }  /* היה 22 */
-      .brandText span{ font-size: 16px; }    /* היה 17 */
-    }
-    /* ============================================== */
-
-    /* Desktop nav */
-    .desktopNav{ flex: 1; min-width: 0; }
-    .desktopNav ul{
-      list-style:none;
-      margin:0; padding:0;
-      display:flex;
-      gap: 8px;
-      flex-wrap: nowrap;
-      white-space: nowrap;
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
-      align-items:center;
-      justify-content:center;
-      scrollbar-width: none;
-    }
-    .desktopNav ul::-webkit-scrollbar{ display:none; }
-    .desktopNav a{
-      padding: 9px 12px;
-      border-radius: 999px;
-      font-size: 14px;
-      color: rgba(47,47,47,.78);
-      flex: 0 0 auto;
-      border: 1px solid transparent;
-      transition: background .15s ease, border-color .15s ease, transform .15s ease;
-    }
-    .desktopNav a:hover{
-      background: rgba(203,222,211,.45);
-      border-color: rgba(59,98,85,.14);
-      color: var(--deep);
-      transform: translateY(-1px);
-    }
-
-    .navActions{
-      display:flex;
-      gap: 10px;
-      flex-wrap:wrap;
-      align-items:center;
-      justify-content:flex-end;
-      min-width: 220px;
-    }
-
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap: 8px;
-      padding: 11px 14px;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      background: rgba(203,222,211,.50);
-      color: var(--deep);
-      font-weight: 800;
-      font-size: 14px;
-      cursor:pointer;
-      transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
-      white-space:nowrap;
-    }
-    .btn:hover{
-      transform: translateY(-1px);
-      box-shadow: 0 10px 22px rgba(47,47,47,.08);
-      background: rgba(203,222,211,.70);
-    }
-    .btn.primary{
-      background: var(--deep);
-      color:#fff;
-      border-color: rgba(59,98,85,.35);
-    }
-    .btn.primary:hover{ background:#2f5449; }
-
-    /* Mobile menu button */
-    .menuBtn{
-      display:none;
-      width: 42px;
-      height: 42px;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      background: rgba(203,222,211,.50);
-      color: var(--deep);
-      font-weight: 900;
-      font-size: 18px;
-      cursor: pointer;
-    }
-
-    /* Mobile drawer */
-    .menuOverlay{
-      position: fixed;
-      inset: 0;
-      background: rgba(47,47,47,.35);
-      z-index: 80;
-    }
-    .mobileMenu{
-      position: fixed;
-      top: 12px;
-      right: 12px;
-      left: 12px;
-      z-index: 90;
-      background: rgba(251,247,240,.96);
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      box-shadow: var(--shadow);
-      overflow: hidden;
-    }
-    .mobileMenuHeader{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      padding: 14px 14px;
-      border-bottom: 1px solid var(--border);
-    }
-    .mobileMenuTitle{ font-weight: 900; color: var(--deep); }
-    .menuClose{
-      width: 38px; height: 38px;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      background: rgba(203,222,211,.50);
-      color: var(--deep);
-      cursor: pointer;
-      font-weight: 900;
-    }
-    .mobileMenuItems{
-      display:flex;
-      flex-direction:column;
-      padding: 10px;
-      gap: 8px;
-    }
-    .menuItem{
-      display:flex;
-      align-items:center;
-      gap: 10px;
-      padding: 12px 12px;
-      border-radius: 14px;
-      border: 1px solid rgba(59,98,85,.14);
-      background: rgba(203,222,211,.34);
-      color: rgba(47,47,47,.85);
-      font-weight: 800;
-    }
-    .menuItem:hover{ background: rgba(203,222,211,.55); }
-    .menuIcon{
-      width: 34px; height: 34px;
-      border-radius: 999px;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      background: rgba(59,98,85,.10);
-      border: 1px solid rgba(59,98,85,.16);
-    }
-
-    /* Main / Sections */
-    main{ padding: 34px 0 54px; }
-    section{
-      margin: 0 0 18px;
-      border-radius: var(--radius);
-      border: 1px solid var(--border);
-      background: rgba(251,247,240,.82);
-      box-shadow: var(--shadowSoft);
-      overflow:hidden;
-      scroll-margin-top: calc(var(--headerH) + 22px);
-    }
+    main{ padding: 30px 0 60px; }
+    section{ margin: 0 0 20px; border-radius: var(--radius); border: 1px solid var(--border); background: rgba(251,247,240,.82); box-shadow: var(--shadowSoft); overflow:hidden; }
     .sectionInner{ padding: 28px; }
 
-    /* HERO */
-    .heroWrap{
-      background:
-        radial-gradient(900px 520px at 92% 10%, rgba(203,222,211,.30), transparent 60%),
-        radial-gradient(900px 520px at 15% 20%, rgba(210,196,158,.30), transparent 60%),
-        rgba(251,247,240,.88);
-    }
-    .heroGrid{
-      display:grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap: 22px;
-      align-items: stretch;
-    }
-    .pill{
-      display:inline-flex;
-      align-items:center;
-      gap: 8px;
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: rgba(210,196,158,.38);
-      border: 1px solid rgba(210,196,158,.65);
-      color: rgba(47,47,47,.76);
-      font-size: 13px;
-      font-weight: 800;
-      white-space: nowrap;
-    }
-    h1{
-      margin: 0 0 12px;
-      font-size: clamp(28px, 3.2vw, 40px);
-      line-height: 1.1;
-      color: var(--deep);
-      letter-spacing: .2px;
-      font-weight: 900;
-    }
-    .heroSub{
-      margin: 0 0 18px;
-      font-size: 16px;
-      color: rgba(47,47,47,.76);
-      max-width: 70ch;
-    }
-    .heroActions{
-      display:flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-top: 6px;
-    }
+    .heroWrap{ background: radial-gradient(circle at 90% 10%, rgba(203,222,211,.4), transparent), rgba(251,247,240,.9); }
+    .heroGrid{ display:grid; grid-template-columns: 1.2fr .8fr; gap: 30px; align-items: center; }
+    .pill{ display:inline-flex; align-items:center; gap: 8px; padding: 8px 12px; border-radius: 999px; background: rgba(210,196,158,.38); border: 1px solid rgba(210,196,158,.65); color: rgba(47,47,47,.76); font-size: 13px; font-weight: 800; white-space: nowrap; }
+    h1{ margin: 0 0 15px; font-size: clamp(32px, 4vw, 48px); line-height: 1.1; color: var(--deep); font-weight: 900; }
+    
+    .heroPhoto .photoBox, .aboutPhoto .photoBox, .stepImg { width: 100%; border-radius: 20px; overflow:hidden; border: 1px solid var(--border); background: #fff; }
+    .heroPhoto img, .aboutPhoto img, .stepImg img { width:100%; height:auto; display:block; object-fit: contain; }
+    .aboutPhoto .photoBox { max-width: 450px; margin: 0 auto; }
 
-    img{ max-width:100%; height:auto; }
-
-    .heroPhoto{
-      background: rgba(203,222,211,.26);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 14px;
-      height: 100%;
-      display:flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-    .photoBox{
-      width: 100%;
-      border-radius: 16px;
-      overflow:hidden;
-      border: 1px solid rgba(59,98,85,.18);
-      background: rgba(251,247,240,.92);
-      aspect-ratio: 4/3;
-    }
-    .photoBox img{
-      width:100%;
-      height:100%;
-      object-fit: cover;
-      display:block;
-    }
-
-    /* Accordion Sections */
-    .acc{ background: rgba(251,247,240,.82); }
-    .acc > summary{
-      cursor: pointer;
-      list-style: none;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap: 12px;
-      padding: 18px 20px;
-      color: var(--deep);
-      font-weight: 900;
-      font-size: 20px;
-      user-select: none;
-      background: rgba(251,247,240,.88);
-    }
+    .acc > summary{ cursor: pointer; list-style: none; display:flex; align-items:center; justify-content:space-between; padding: 20px; color: var(--deep); font-weight: 800; font-size: 19px; background: rgba(251,247,240,.5); transition: background 0.2s; }
+    .acc > summary:hover { background: rgba(203,222,211,.2); }
     .acc > summary::-webkit-details-marker{ display:none; }
-    .acc > summary .chev{
-      width: 36px; height: 36px;
-      border-radius: 999px;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      background: rgba(59,98,85,.10);
-      border: 1px solid rgba(59,98,85,.16);
-      font-size: 18px;
-      flex: 0 0 auto;
-      transition: transform .15s ease;
-    }
-    .acc[open] > summary .chev{ transform: rotate(180deg); }
+    .accContent{ padding: 20px; background: var(--boxBg); border-top: 1px solid var(--border); }
+    .block{ background: #fff; border: 1px solid var(--border); border-radius: 16px; padding: 20px; font-size: 16px; color: #444; }
 
-    .accContent{
-      padding: 16px 20px 20px;
-      background: var(--boxBg);
-      border-top: 1px solid rgba(210,196,158,.50);
-    }
-
-    .block{
-      background: rgba(251,247,240,.72);
-      border: 1px solid var(--boxBorder);
-      border-radius: 16px;
-      padding: 16px;
-      margin-top: 0;
-      color: rgba(47,47,47,.82);
-      font-size: 15px;
-    }
-
-    /* Cards */
-    .cards{
-      display:grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
-      margin-top: 0;
-    }
-    .card{
-      background: rgba(251,247,240,.72);
-      border: 1px solid var(--boxBorder);
-      border-radius: 16px;
-      padding: 16px;
-    }
-    .card strong{ color: var(--deep); font-size: 15px; display:block; margin-bottom: 6px; }
+    .cards{ display:grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 0; }
+    .card{ background: rgba(251,247,240,.72); border: 1px solid var(--boxBorder); border-radius: 16px; padding: 16px; }
+    .card strong { color: var(--deep); display: block; margin-bottom: 5px; font-size: 15px; }
     .card span{ color: rgba(47,47,47,.76); font-size: 14px; }
-
-    /* Steps with image beside text */
-    .steps{
-      display:grid;
-      grid-template-columns: 1fr;
-      gap: 12px;
-      margin-top: 0;
-    }
-    .step{
-      background: rgba(251,247,240,.72);
-      border: 1px solid var(--boxBorder);
-      border-radius: 16px;
-      padding: 14px;
-      display:grid;
-      grid-template-columns: 170px 1fr;
-      gap: 14px;
-      align-items: center;
-    }
-    .stepImg{
-      width: 100%;
-      aspect-ratio: 4/3;
-      border-radius: 14px;
-      overflow: hidden;
-      border: 1px solid rgba(59,98,85,.14);
-      background: rgba(203,222,211,.18);
-    }
-    .stepImg img{
-      width:100%;
-      height:100%;
-      object-fit: cover;
-      display:block;
-    }
-    .stepTitleRow{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap: 10px;
-      margin-bottom: 6px;
-    }
-    .stepNum{
-      width: 34px; height: 34px;
-      border-radius: 999px;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      background: rgba(59,98,85,.12);
-      border: 1px solid rgba(59,98,85,.18);
-      color: var(--deep);
-      font-weight: 900;
-      flex: 0 0 auto;
-    }
+    
+    .step{ background: rgba(251,247,240,.72); padding: 14px; border-radius: 16px; display: grid; grid-template-columns: 170px 1fr; gap: 14px; align-items: center; margin-bottom: 12px; border: 1px solid var(--boxBorder); }
+    .stepNum{ width: 34px; height: 34px; border-radius: 999px; display:inline-flex; align-items:center; justify-content:center; background: rgba(59,98,85,.12); border: 1px solid rgba(59,98,85,.18); color: var(--deep); font-weight: 900; flex: 0 0 auto; }
     .step h3{ margin:0; color: var(--deep); font-size: 16px; font-weight: 900; }
     .step p{ margin:0; color: rgba(47,47,47,.76); font-size: 14px; }
 
-    /* About */
-    .aboutGrid{
-      display:grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap: 14px;
-      align-items: start;
-      margin-top: 0;
-    }
-    .aboutText{
-      background: rgba(251,247,240,.72);
-      border: 1px solid var(--boxBorder);
-      border-radius: 16px;
-      padding: 16px;
-      color: rgba(47,47,47,.82);
-      font-size: 15px;
-    }
+    .aboutGrid{ display:grid; grid-template-columns: 1.2fr .8fr; gap: 14px; align-items: start; margin-top: 0; }
+    .aboutText{ background: rgba(251,247,240,.72); border: 1px solid var(--boxBorder); border-radius: 16px; padding: 16px; color: rgba(47,47,47,.82); font-size: 15px; }
     .aboutText p{ margin: 0 0 10px; }
-    .aboutText p:last-child{ margin-bottom:0; }
-    .aboutFinal{
-      margin-top: 8px;
-      font-weight: 600;
-      color: rgba(47,47,47,.82);
-    }
+    .aboutFinal{ margin-top: 8px; font-weight: 600; color: rgba(47,47,47,.82); }
+    .aboutPhoto{ background: rgba(251,247,240,.72); border: 1px solid var(--boxBorder); border-radius: 16px; padding: 12px; }
+    
+    .faq{ display:grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 0; align-items: start; }
+    .faq details{ align-self: start; background: rgba(251,247,240,.72); border: 1px solid var(--boxBorder); border-radius: 16px; padding: 14px 16px; }
+    .faq summary{ cursor:pointer; list-style:none; font-weight: 900; color: var(--deep); background:transparent; padding:0; display:flex; justify-content:space-between; align-items:center; }
+    .faq summary span.arrow { font-size: 18px; color: var(--sage); transition: transform 0.2s; }
+    .faq details[open] summary span.arrow { transform: rotate(180deg); }
+    .faq details p{ margin: 10px 0 0; color: rgba(47,47,47,.76); font-size: 14px; }
+    
+    .testimonial-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+    .testimonial-card { background: #fff; padding: 25px; border-radius: 16px; border: 1px solid var(--border); box-shadow: 0 4px 10px rgba(0,0,0,0.03); position: relative; }
+    .testimonial-card::before { content: "❝"; position: absolute; top: 10px; right: 20px; font-size: 40px; color: var(--mint); opacity: 0.5; }
+    .testimonial-text { font-style: italic; color: #555; display: block; margin-bottom: 15px; font-size: 15px; }
+    .testimonial-author { font-weight: 800; color: var(--deep); font-size: 14px; display: block; text-align: left; }
+    .stars { color: #f1c40f; font-size: 14px; margin-bottom: 8px; display: block; }
 
-    .aboutPhoto{
-      background: rgba(251,247,240,.72);
-      border: 1px solid var(--boxBorder);
-      border-radius: 16px;
-      padding: 12px;
-    }
-    .aboutPhoto .photoBox{ aspect-ratio: 4/5; }
-    .aboutPhoto .photoBox img{ object-fit: cover; }
+    /* Contact Styles */
+    .contact-box-unified { max-width: 1000px; margin: 0 auto; background: #fff; padding: 40px; border-radius: 24px; border: 1px solid var(--border); }
+    .contact-split { display: flex; align-items: center; gap: 40px; text-align: right; }
+    .contact-text-side { flex: 1; }
+    .contact-map-side { flex: 1; height: 350px; border-radius: 16px; overflow: hidden; border: 1px solid var(--border); background: #f0f0f0; }
+    .contact-map-side iframe { width: 100%; height: 100%; border: 0; display: block; }
+    .contact-info { font-size: 18px; color: #444; margin: 10px 0; }
+    .social-icons-row { display: flex; justify-content: flex-start; gap: 25px; margin: 25px 0; }
+    .social-icon-link { width: 50px; height: 50px; background: var(--cream); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; color: var(--deep); transition: all 0.3s; border: 1px solid var(--border); }
+    .social-icon-link:hover { background: var(--deep); color: #fff; transform: scale(1.1); }
 
-    /* FAQ */
-    .faq{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-top: 0;
-      align-items: start;
-    }
-    .faq details{
-      align-self: start;
-      background: rgba(251,247,240,.72);
-      border: 1px solid var(--boxBorder);
-      border-radius: 16px;
-      padding: 14px 16px;
-    }
-    .faq summary{
-      cursor:pointer;
-      list-style:none;
-      font-weight: 900;
-      color: var(--deep);
-    }
-    .faq summary::-webkit-details-marker{ display:none; }
-    .faq details p{
-      margin: 10px 0 0;
-      color: rgba(47,47,47,.76);
-      font-size: 14px;
-    }
+    .whatsapp-float { position: fixed; bottom: 25px; left: 25px; background: #25d366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 32px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); z-index: 1000; transition: transform 0.3s; }
+    .whatsapp-float:hover { transform: scale(1.1); }
 
-    /* Contact content */
-    .contactGrid{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      align-items: start;
-    }
-    .contactItem{
-      background: rgba(251,247,240,.72);
-      border: 1px solid var(--boxBorder);
-      border-radius: 16px;
-      padding: 16px;
-    }
-    .contactRow{
-      display:flex;
-      align-items:center;
-      gap: 10px;
-      flex-wrap: wrap;
-      color: rgba(47,47,47,.82);
-      font-weight: 700;
-    }
-    .contactIcon{
-      width: 36px; height: 36px;
-      border-radius: 999px;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      background: rgba(139,164,154,.14);
-      border: 1px solid rgba(139,164,154,.45);
-      color: var(--sage);
-      flex: 0 0 auto;
-    }
-    .contactIcon svg{ width: 18px; height: 18px; }
-    .contactActions{
-      display:flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-top: 12px;
-    }
+    .a11y-btn { position: fixed; bottom: 25px; right: 25px; background: var(--deep); color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); z-index: 2000; cursor: pointer; border: none; }
+    .a11y-menu { position: fixed; bottom: 95px; right: 25px; background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 15px; width: 200px; box-shadow: 0 10px 40px rgba(0,0,0,0.2); z-index: 2000; display: none; flex-direction: column; gap: 10px; }
+    .a11y-menu button { background: #f0f0f0; border: none; padding: 10px; border-radius: 8px; font-weight: bold; cursor: pointer; text-align: right; color: #333; }
+    .a11y-menu button:hover { background: #e0e0e0; }
+    
+    body.high-contrast { background: #000; color: #fff; }
+    body.high-contrast header, body.high-contrast section, body.high-contrast .card, body.high-contrast .block, body.high-contrast .step, body.high-contrast .aboutText, body.high-contrast .testimonial-card, body.high-contrast .contact-box-unified, body.high-contrast .a11y-menu, body.high-contrast .mobileMenu, body.high-contrast .contact-map-side { background: #000 !important; border: 2px solid #fff; color: #fff !important; }
+    body.high-contrast p, body.high-contrast h1, body.high-contrast h2, body.high-contrast h3, body.high-contrast strong, body.high-contrast span { color: #fff !important; }
+    body.high-contrast a { color: #ffff00 !important; text-decoration: underline; }
+    body.high-contrast .btn { border: 2px solid #fff; color: #fff; background: #000; }
+    
+    body.large-text { font-size: 120%; }
+    body.large-text h1 { font-size: 3em; }
 
-    footer{
-      text-align:center;
-      padding: 18px 0 10px;
-      color: rgba(47,47,47,.66);
-      font-size: 13px;
-    }
+    .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.7); z-index: 3000; display: none; align-items: center; justify-content: center; padding: 20px; }
+    .modal-content { background: #fff; padding: 30px; border-radius: 16px; max-width: 600px; max-height: 80vh; overflow-y: auto; position: relative; }
+    .modal-close { position: absolute; top: 15px; left: 15px; font-size: 24px; cursor: pointer; background: none; border: none; }
 
-    /* Responsive */
-    @media (max-width: 980px){
-      .heroGrid{ grid-template-columns: 1fr; }
-      .aboutGrid{ grid-template-columns: 1fr; }
-      .contactGrid{ grid-template-columns: 1fr; }
-      .sectionInner{ padding: 24px; }
-      .step{ grid-template-columns: 1fr; }
-      .stepImg{ aspect-ratio: 16/9; }
-    }
-    @media (max-width: 860px){
-      .desktopNav{ display:none; }
-      .menuBtn{ display:inline-flex; align-items:center; justify-content:center; }
-      .cards{ grid-template-columns: 1fr; }
-      .faq{ grid-template-columns: 1fr; }
-      .brand, .navActions{ min-width: unset; }
-      main{ padding-top: 26px; }
+    @media (max-width: 950px){
+      .desktopNav { display: none; }
+      .menuBtn { display: flex; }
+      .heroGrid { grid-template-columns: 1fr; }
+      .aboutGrid { grid-template-columns: 1fr; }
+      .step { grid-template-columns: 1fr; }
+      .stepImg { width: 100%; } 
+      .cards { grid-template-columns: 1fr; }
+      .faq { grid-template-columns: 1fr; }
+      .navActions span.btn { display: none; }
+      .logoImg { height: 42px; }
+      .brand { max-width: 70%; overflow: hidden; gap: 8px; }
+      .divider-vertical { height: 30px; margin: 0 4px; }
+      
+      .contact-split { flex-direction: column; text-align: center; }
+      .contact-map-side { width: 100%; margin-top: 25px; }
+      .social-icons-row { justify-content: center; }
+      .contact-text-side { width: 100%; }
     }
   </style>
 </head>
 
-<body>
+<body id="main-content">
+  <a href="#main-content" class="skip-link">דלג לתוכן המרכזי</a>
+  <a href="https://wa.me/972545768495" class="whatsapp-float" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+
+  <button class="a11y-btn" id="a11yBtn" aria-label="תפריט נגישות"><i class="fas fa-wheelchair"></i></button>
+  <div class="a11y-menu" id="a11yMenu">
+    <button onclick="document.body.classList.toggle('large-text')">A+ הגדלת טקסט</button>
+    <button onclick="document.body.classList.toggle('high-contrast')">🌗 ניגודיות גבוהה</button>
+    <button onclick="document.querySelectorAll('a').forEach(a => a.style.textDecoration = a.style.textDecoration === 'underline' ? 'none' : 'underline')">🔗 הדגשת קישורים</button>
+  </div>
+
   <header>
     <div class="container">
       <div class="nav">
         <div class="brand">
-          <div class="brandLogo" aria-label="לוגו">
-            <img src="logo.png" alt="RONY logo" loading="eager" decoding="async">
-          </div>
-
+          <img src="logo_long.png" alt="לוגו רוני פפוביאן אוסטאופתיה נהריה" class="logoImg">
+          <div class="divider-vertical" aria-hidden="true"></div>
           <div class="brandText">
             <strong>רוני פפוביאן</strong>
             <span>אוסטאופתית D.O</span>
           </div>
         </div>
-
-        <nav class="desktopNav" aria-label="ניווט ראשי">
+        <nav class="desktopNav">
           <ul>
             <li><a class="navLink" href="#osteopathy">מה זה אוסטאופתיה</a></li>
             <li><a class="navLink" href="#forwho">למי זה מתאים</a></li>
             <li><a class="navLink" href="#process">שלבי הטיפול</a></li>
             <li><a class="navLink" href="#about">מי אני</a></li>
             <li><a class="navLink" href="#faq">שאלות נפוצות</a></li>
+            <li><a class="navLink" href="#reviews">המלצות</a></li>
             <li><a class="navLink" href="#contact">יצירת קשר</a></li>
           </ul>
         </nav>
-
-        <button class="menuBtn" id="menuBtn" aria-label="פתח תפריט" aria-expanded="false" aria-controls="mobileMenu">☰</button>
-
+        <button class="menuBtn" id="menuBtn" aria-label="תפריט">☰</button>
         <div class="navActions">
-          <a class="btn navLink" href="#contact">דברו איתי</a>
-          <a class="btn primary" href="https://wa.me/972545768495" target="_blank" rel="noopener">WhatsApp</a>
+          <span class="btn">054-5768495</span>
+          <a class="btn primary" href="#contact">דברו איתי</a>
         </div>
       </div>
     </div>
   </header>
 
-  <!-- Mobile Menu Drawer -->
   <div class="menuOverlay" id="menuOverlay" hidden></div>
-
-  <div class="mobileMenu" id="mobileMenu" hidden role="dialog" aria-modal="true" aria-label="תפריט ניווט">
-    <div class="mobileMenuHeader">
-      <div class="mobileMenuTitle">ניווט</div>
-      <button class="menuClose" id="menuClose" aria-label="סגור תפריט">✕</button>
-    </div>
-
-    <div class="mobileMenuItems">
-      <a class="menuItem navLink" href="#osteopathy" data-close-menu><span class="menuIcon">🌿</span><span>מה זה אוסטאופתיה</span></a>
-      <a class="menuItem navLink" href="#forwho" data-close-menu><span class="menuIcon">🎯</span><span>למי זה מתאים</span></a>
-      <a class="menuItem navLink" href="#process" data-close-menu><span class="menuIcon">🧭</span><span>שלבי הטיפול</span></a>
-      <a class="menuItem navLink" href="#about" data-close-menu><span class="menuIcon">👤</span><span>מי אני</span></a>
-      <a class="menuItem navLink" href="#faq" data-close-menu><span class="menuIcon">❓</span><span>שאלות נפוצות</span></a>
-      <a class="menuItem navLink" href="#contact" data-close-menu><span class="menuIcon">📞</span><span>יצירת קשר</span></a>
-    </div>
+  <div class="mobileMenu" id="mobileMenu" hidden>
+    <button class="menuClose" id="menuClose">✕</button>
+    <div style="font-weight:900; font-size:20px; color:var(--deep); margin-bottom:10px; text-align:center;">תפריט</div>
+    <a class="mobileMenuItem navLink" href="#osteopathy" data-close>🌿 מה זה אוסטאופתיה</a>
+    <a class="mobileMenuItem navLink" href="#forwho" data-close>🎯 למי זה מתאים</a>
+    <a class="mobileMenuItem navLink" href="#process" data-close>👐 שלבי הטיפול</a>
+    <a class="mobileMenuItem navLink" href="#about" data-close>👩‍⚕️ מי אני</a>
+    <a class="mobileMenuItem navLink" href="#faq" data-close>❓ שאלות נפוצות</a>
+    <a class="mobileMenuItem navLink" href="#reviews" data-close>⭐ המלצות</a>
+    <a class="mobileMenuItem navLink" href="#contact" data-close>📞 יצירת קשר</a>
   </div>
 
   <main class="container">
 
-    <!-- HERO -->
     <section class="heroWrap" id="top">
       <div class="sectionInner">
         <div class="heroGrid">
@@ -676,365 +281,231 @@
               <span class="pill">אוסטאופתיה נהריה</span>
               <span class="pill">טיפול מנואלי עדין</span>
             </div>
-
-            <h1>טיפול אוסטאופתי, חזרה לאיזון ונוחות בגוף.</h1>
-
-            <p class="heroSub">
-              אוסטאופתיה היא שיטת טיפול מנואלית המתבוננת בגוף כמערכת אחת שלמה.
-              באמצעות אבחון מדויק ומגע עדין, הטיפול פועל לשיפור התנועה, להפחתת עומסים ולהחזרת הגוף לאיזון.
-            </p>
-
+            <h1>רוני פפוביאן - אוסטאופתיה נהריה</h1>
+            <p class="heroSub">אוסטאופתיה היא שיטת טיפול מנואלית המתבוננת בגוף כמערכת אחת שלמה. באמצעות אבחון מדויק ומגע עדין, הטיפול פועל לשיפור התנועה, להפחתת עומסים ולהחזרת הגוף לאיזון.</p>
             <div class="heroActions">
-              <a class="btn primary navLink" href="#contact">לקביעת טיפול</a>
-              <a class="btn" href="tel:+972545768495">חיוג</a>
+              <a class="btn cta-highlight navLink" href="#contact">לקביעת טיפול</a>
+              <a class="btn" href="https://wa.me/972545768495" target="_blank">חיוג</a>
             </div>
           </div>
-
-          <aside class="heroPhoto" aria-label="תמונה טיפולית">
-            <div class="photoBox">
-              <img src="header.jpg" alt="טיפול אוסטאופתי" loading="eager" decoding="async">
-            </div>
-          </aside>
+          <div class="heroPhoto"><div class="photoBox"><img src="header.jpg" alt="רוני פפוביאן בקליניקה"></div></div>
         </div>
       </div>
     </section>
 
-    <!-- What is osteopathy -->
     <section>
       <details class="acc" id="osteopathy">
-        <summary>
-          <div>מה זה אוסטאופתיה?</div>
-          <span class="chev">⌄</span>
-        </summary>
-        <div class="accContent">
-          <div class="block">
-            <p style="margin:0 0 10px;">
-              אוסטאופתיה היא גישת טיפול פרא-רפואית, מנואלית (ידנית) המתבוננת בגוף כמערכת אחת שלמה.
-              הגישה האוסטאופתית מחפשת להבין את הקשר בין מבנה, תנועה ותפקוד, ולאתר עומסים או מגבלות שיכולים להשפיע על כאב ותחושה כללית בגוף.
-            </p>
-            <p style="margin:0;">
-              הטיפול מבוסס על ידע קליני רחב באנטומיה, פיזיולוגיה, פתולוגיות וביומכניקה, וכולל אבחון מעמיק וטיפול מנואלי עדין ומדויק,
-              במטרה לשפר תפקוד תנועתי, להפחית עומסים ולתמוך במנגנוני הריפוי הטבעיים של הגוף.
-            </p>
-          </div>
-        </div>
+        <summary><div>מה זה אוסטאופתיה?</div><span class="chev">⌄</span></summary>
+        <div class="accContent"><div class="block">
+            <p style="margin:0 0 10px;">אוסטאופתיה היא גישת טיפול פרא-רפואית, מנואלית (ידנית) המתבוננת בגוף כמערכת אחת שלמה. הגישה האוסטאופתית מחפשת להבין את הקשר בין מבנה, תנועה ותפקוד, ולאתר עומסים או מגבלות שיכולים להשפיע על כאב ותחושה כללית בגוף.</p>
+            <p style="margin:0;">הטיפול מבוסס על ידע קליני רחב באנטומיה, פיזיולוגיה, פתולוגיות וביומכניקה, וכולל אבחון מעמיק וטיפול מנואלי עדין ומדויק, במטרה לשפר תפקוד תנועתי, להפחית עומסים ולתמוך במנגנוני הריפוי הטבעיים של הגוף.</p>
+        </div></div>
       </details>
     </section>
 
-    <!-- For who -->
     <section>
       <details class="acc" id="forwho">
-        <summary>
-          <div>למי זה מתאים?</div>
-          <span class="chev">⌄</span>
-        </summary>
-        <div class="accContent">
-          <div class="cards">
-            <div class="card">
-              <strong>כאבים במערכת השלד-שריר</strong>
-              <span>גב, צוואר, כתפיים, ברכיים ועוד</span>
-            </div>
-
-            <div class="card">
-              <strong>כאבי ראש, לסת ועומס צווארי</strong>
-              <span>מיגרנות, כאב ראש ממקור צווארי, כאבים בלסת</span>
-            </div>
-
-            <div class="card">
-              <strong>בעיות במערכת העיכול</strong>
-              <span>נפיחות, עצירות, תפקוד ירוד</span>
-            </div>
-
-            <div class="card">
-              <strong>נוקשות או מגבלות בטווחי תנועה</strong>
-              <span>תחושה של “לא מצליח/ה לזוז כמו פעם”</span>
-            </div>
-
-            <div class="card">
-              <strong>חוסר איזון פיזי, עייפות או תחושת תקיעות</strong>
-              <span>כשהגוף מרגיש כבד או לא נינוח</span>
-            </div>
-
-            <div class="card">
-              <strong>תמיכה בתקופות רגישות</strong>
-              <span>סטרס, הריון, לידה והתאוששות</span>
-            </div>
-
-            <div class="card">
-              <strong>תינוקות</strong>
-              <span>טיפול עדין, מתאים לקשיי הנקה, העדפת צד, רפלוקס, חוסר שקט ועוד</span>
-            </div>
-          </div>
-        </div>
+        <summary><div>למי זה מתאים?</div><span class="chev">⌄</span></summary>
+        <div class="accContent"><div class="cards">
+            <div class="card"><strong>כאבים במערכת השלד-שריר</strong><span>גב, צוואר, כתפיים, ברכיים ועוד</span></div>
+            <div class="card"><strong>כאבי ראש, לסת ועומס צווארי</strong><span>מיגרנות, כאב ראש ממקור צווארי, כאבים בלסת</span></div>
+            <div class="card"><strong>בעיות במערכת העיכול</strong><span>נפיחות, עצירות, תפקוד ירוד</span></div>
+            <div class="card"><strong>נוקשות או מגבלות בטווחי תנועה</strong><span>תחושה של “לא מצליח/ה לזוז כמו פעם”</span></div>
+            <div class="card"><strong>חוסר איזון פיזי, עייפות או תחושת תקיעות</strong><span>כשהגוף מרגיש כבד או לא נינוח</span></div>
+            <div class="card"><strong>תמיכה בתקופות רגישות</strong><span>סטרס, הריון, לידה והתאוששות</span></div>
+            <div class="card"><strong>תינוקות</strong><span>טיפול עדין, מתאים לקשיי הנקה, העדפת צד, רפלוקס, חוסר שקט ועוד</span></div>
+        </div></div>
       </details>
     </section>
 
-    <!-- Process -->
     <section>
       <details class="acc" id="process">
-        <summary>
-          <div>שלבי הטיפול האוסטאופתי</div>
-          <span class="chev">⌄</span>
-        </summary>
-        <div class="accContent">
-          <div class="steps">
-
+        <summary><div>שלבי הטיפול האוסטאופתי</div><span class="chev">⌄</span></summary>
+        <div class="accContent"><div class="steps">
             <div class="step">
-              <div class="stepImg">
-                <img src="step-intake.jpg" alt="תשאול" loading="lazy" decoding="async">
-              </div>
+              <div class="stepImg"><img src="step-intake.jpg" alt="שלב התשאול בקליניקה"></div>
               <div>
-                <div class="stepTitleRow">
-                  <h3>תשאול</h3>
-                  <span class="stepNum">1</span>
-                </div>
-                <p>
-                  נתחיל בשיחה מעמיקה על התלונה, ההיסטוריה הרפואית, אורח החיים ודפוסי תנועה
-                  כדי להבין את התמונה המלאה ולחפש את שורש הבעיה
-                </p>
+                <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:6px;"><h3>תשאול</h3><span class="stepNum">1</span></div>
+                <p>נתחיל בשיחה מעמיקה על התלונה, ההיסטוריה הרפואית, אורח החיים ודפוסי תנועה כדי להבין את התמונה המלאה ולחפש את שורש הבעיה</p>
               </div>
             </div>
-
             <div class="step">
-              <div class="stepImg">
-                <img src="step-tests.jpg" alt="בדיקות" loading="lazy" decoding="async">
-              </div>
+              <div class="stepImg"><img src="step-tests.jpg" alt="בדיקות תנועה"></div>
               <div>
-                <div class="stepTitleRow">
-                  <h3>בדיקות</h3>
-                  <span class="stepNum">2</span>
-                </div>
-                <p>
-                  נבצע בדיקה אוסטאופתית הכוללת הסתכלות על היציבה, מישוש הרקמות, בדיקות תנועה,
-                  ובמידת הצורך בדיקות נוירולוגיות ואורתופדיות
-                </p>
+                 <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:6px;"><h3>בדיקות</h3><span class="stepNum">2</span></div>
+                <p>נבצע בדיקה אוסטאופתית הכוללת הסתכלות על היציבה, מישוש הרקמות, בדיקות תנועה, ובמידת הצורך בדיקות נוירולוגיות ואורתופדיות</p>
               </div>
             </div>
-
             <div class="step">
-              <div class="stepImg">
-                <img src="step-treatment.jpg" alt="טיפול" loading="lazy" decoding="async">
-              </div>
+              <div class="stepImg"><img src="step-treatment.jpg" alt="טיפול מנואלי"></div>
               <div>
-                <div class="stepTitleRow">
-                  <h3>טיפול</h3>
-                  <span class="stepNum">3</span>
-                </div>
-                <p>
-                  הטיפול משלב מגע עדין ומדויק וטכניקות שונות כגון רקמה רכה, מוביליזציות ומניפולציות
-                  במטרה לשפר תנועה, להפחית עומסים, לתמוך במערכת העצבים ולחזק את מנגנוני הריפוי הטבעיים של הגוף
-                </p>
+                 <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:6px;"><h3>טיפול</h3><span class="stepNum">3</span></div>
+                <p>הטיפול משלב מגע עדין ומדויק וטכניקות שונות כגון רקמה רכה, מוביליזציות ומניפולציות במטרה לשפר תנועה, להפחית עומסים, לתמוך במערכת העצבים ולחזק את מנגנוני הריפוי הטבעיים של הגוף</p>
               </div>
             </div>
-
-          </div>
-        </div>
+        </div></div>
       </details>
     </section>
 
-    <!-- About -->
     <section>
       <details class="acc" id="about">
-        <summary>
-          <div>מי אני?</div>
-          <span class="chev">⌄</span>
-        </summary>
-        <div class="accContent">
-          <div class="aboutGrid">
+        <summary><div>מי אני?</div><span class="chev">⌄</span></summary>
+        <div class="accContent"><div class="aboutGrid">
             <div class="aboutText">
-              <p>
-                נעים מאוד, אני רוני פפוביאן אוסטאופתית מוסמכת D.O מאז ומתמיד עסקתי והתעניינתי בגוף ובתנועה.
-                הייתי מאמנת כוח וקרוספיט, וליוויתי מאות מתאמנים לאורך הדרך.
-                במפגש עם אנשים שהתמודדו עם מגבלות, עומסים וכאב, הבנתי שלמרות הידע והניסיון שצברתי — לא תמיד יש בידי את הכלים המדויקים לעזור באמת.
-                מתוך המקום הזה נולד הרצון להעמיק, להבין את הגוף לעומק, ולרכוש כלים טיפוליים רחבים ומדויקים יותר — וכך הגעתי ללימודי האוסטאופתיה.
-              </p>
-
-              <p>
-                במהלך חמש שנות לימוד צללתי לעולמות האנטומיה, הפיזיולוגיה והפתולוגיה, לצד עבודה קלינית מגוונת.
-                הלימודים הקנו לי ראייה רחבה של גוף האדם כמכלול - גוף תנועה ונפש ועיצבו את דרכי כמטפלת: הקשבה עמוקה, רגישות, דיוק וסבלנות לכל אדם שמגיע אליי.
-              </p>
-
-              <p>
-                אני מאמינה שטיפול טוב מתחיל בסקרנות והקשבה למטופל, וממשיך במגע עדין ומדויק.
-                מניסיון אישי אני יודעת עד כמה כאב יכול להשפיע על היומיום, על התנועה, ועל איכות החיים - וכמה קשה לחיות בגוף שלא מרגיש נוח.
-                המטרה שלי היא לעזור לאנשים להרגיש בטוחים יותר בגופם, לנוע בחופשיות רבה יותר, ולהחזיר תחושת איזון ונינוחות לחיים.
-              </p>
-
-              <p class="aboutFinal">
-                הגוף הוא הבית שאנחנו חיים בו כל החיים.<br>
-                לדאוג לו בזמן — זו לא מותרות, זו אחריות 🌿
-              </p>
+              <p>נעים מאוד, אני רוני פפוביאן אוסטאופתית מוסמכת D.O מאז ומתמיד עסקתי והתעניינתי בגוף ובתנועה. הייתי מאמנת כוח וקרוספיט, וליוויתי מאות מתאמנים לאורך הדרך. במפגש עם אנשים שהתמודדו עם מגבלות, עומסים וכאב, הבנתי שלמרות הידע והניסיון שצברתי — לא תמיד יש בידי את הכלים המדויקים לעזור באמת. מתוך המקום הזה נולד הרצון להעמיק, להבין את הגוף לעומק, ולרכוש כלים טיפוליים רחבים ומדויקים יותר — וכך הגעתי ללימודי האוסטאופתיה.</p>
+              <p>במהלך חמש שנות לימוד צללתי לעולמות האנטומיה, הפיזיולוגיה והפתולוגיה, לצד עבודה קלינית מגוונת. הלימודים הקנו לי ראייה רחבה של גוף האדם כמכלול - גוף תנועה ונפש ועיצבו את דרכי כמטפלת: הקשבה עמוקה, רגישות, דיוק וסבלנות לכל אדם שמגיע אליי.</p>
+              <p>אני מאמינה שטיפול טוב מתחיל בסקרנות והקשבה למטופל, וממשיך במגע עדין ומדויק. מניסיון אישי אני יודעת עד כמה כאב יכול להשפיע על היומיום, על התנועה, ועל איכות החיים - וכמה קשה לחיות בגוף שלא מרגיש נוח. המטרה שלי היא לעזור לאנשים להרגיש בטוחים יותר בגופם, לנוע בחופשיות רבה יותר, ולהחזיר תחושת איזון ונינוחות לחיים.</p>
+              <p class="aboutFinal">הגוף הוא הבית שאנחנו חיים בו כל החיים.<br>לדאוג לו בזמן — זו לא מותרות, זו אחריות 🌿</p>
             </div>
-
-            <div class="aboutPhoto">
-              <div class="photoBox">
-                <img src="about.jpg" alt="רוני פפוביאן" loading="lazy" decoding="async">
-              </div>
-            </div>
-          </div>
-        </div>
+            <div class="aboutPhoto"><div class="photoBox"><img src="about.jpg" alt="רוני פפוביאן אוסטאופתית"></div></div>
+        </div></div>
       </details>
     </section>
 
-    <!-- FAQ -->
     <section>
       <details class="acc" id="faq">
-        <summary>
-          <div>שאלות נפוצות</div>
-          <span class="chev">⌄</span>
-        </summary>
-        <div class="accContent">
-          <div class="faq">
-            <details>
-              <summary>כמה זמן נמשך טיפול?</summary>
-              <p>טיפול ראשון אורך כשעה וכולל תשאול, בדיקות וטיפול. טיפול המשך אורכים כ-45-50 דק'.</p>
-            </details>
-
-            <details>
-              <summary>האם הטיפול כואב?</summary>
-              <p>רוב העבודה היא עדינה ומותאמת אלייך. לפעמים יש רגישות נקודתית, אבל המטרה היא לעבוד בתוך גבולות שנוחים לך, ולצאת מהטיפול בתחושה טובה ובטוחה.</p>
-            </details>
-
-            <details>
-              <summary>כמה טיפולים צריך?</summary>
-              <p>אין מספר “קבוע”. זה תלוי באופי הבעיה, כמה זמן היא קיימת, ומה הגוף צריך. בדרך כלל נרצה לראות שינוי תוך כמה מפגשים ואז נדייק את ההמשך.</p>
-            </details>
-
-            <details>
-              <summary>מה כדאי להביא / איך מגיעים לטיפול?</summary>
-              <p>מומלץ להגיע בבגדים נוחים שיאפשרו לזוז בהם. אם יש בדיקות/הדמיות רלוונטיות — אפשר להביא. מעבר לזה, פשוט להגיע כמו שאת/ה.</p>
-            </details>
-
-            <details>
-              <summary>כל כמה זמן מומלץ להגיע?</summary>
-              <p>בתחילת תהליך לפעמים נרצה מרווח קצר יותר בין מפגשים, ובהמשך מרווח גדול יותר כדי לשמר תוצאות. ההמלצה תמיד תהיה אישית ובהתאם למה שהגוף מראה.</p>
-            </details>
-
-            <details>
-              <summary>האם אפשר לשלב טיפול גם בהריון / אחרי לידה?</summary>
-              <p>כן — הטיפול מותאם לשלב ולצרכים של התקופה, בדגש על עדינות ובטיחות. אם יש משהו שדורש בירור רפואי — אני אגיד ואכוון בהתאם.</p>
-            </details>
-          </div>
-        </div>
+        <summary><div>שאלות נפוצות</div><span class="chev">⌄</span></summary>
+        <div class="accContent"><div class="faq">
+            <details><summary>כמה זמן נמשך טיפול? <span class="arrow">⌄</span></summary><p>טיפול ראשון אורך כשעה וכולל תשאול, בדיקות וטיפול. טיפול המשך אורכים כ-45-50 דק'.</p></details>
+            <details><summary>האם הטיפול כואב? <span class="arrow">⌄</span></summary><p>רוב העבודה היא עדינה ומותאמת אלייך. לפעמים יש רגישות נקודתית, אבל המטרה היא לעבוד בתוך גבולות שנוחים לך, ולצאת מהטיפול בתחושה טובה ובטוחה.</p></details>
+            <details><summary>כמה טיפולים צריך? <span class="arrow">⌄</span></summary><p>אין מספר “קבוע”. זה תלוי באופי הבעיה, כמה זמן היא קיימת, ומה הגוף צריך. בדרך כלל נרצה לראות שינוי תוך כמה מפגשים ואז נדייק את ההמשך.</p></details>
+            <details><summary>מה כדאי להביא / איך מגיעים לטיפול? <span class="arrow">⌄</span></summary><p>מומלץ להגיע בבגדים נוחים שיאפשרו לזוז בהם. אם יש בדיקות/הדמיות רלוונטיות — אפשר להביא. מעבר לזה, פשוט להגיע כמו שאת/ה.</p></details>
+            <details><summary>כל כמה זמן מומלץ להגיע? <span class="arrow">⌄</span></summary><p>בתחילת תהליך לפעמים נרצה מרווח קצר יותר בין מפגשים, ובהמשך מרווח גדול יותר כדי לשמר תוצאות. ההמלצה תמיד תהיה אישית ובהתאם למה שהגוף מראה.</p></details>
+            <details><summary>האם אפשר לשלב טיפול גם בהריון / אחרי לידה? <span class="arrow">⌄</span></summary><p>כן — הטיפול מותאם לשלב ולצרכים של התקופה, בדגש על עדינות ובטיחות. אם יש משהו שדורש בירור רפואי — אני אגיד ואכוון בהתאם.</p></details>
+        </div></div>
       </details>
     </section>
 
-    <!-- CONTACT (Accordion last + navigable) -->
-    <section>
-      <details class="acc" id="contact">
-        <summary>
-          <div>יצירת קשר</div>
-          <span class="chev">⌄</span>
-        </summary>
-
-        <div class="accContent">
-          <div class="contactGrid">
-            <div class="contactItem">
-              <div class="contactRow">
-                <span class="contactIcon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.86 19.86 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.86 19.86 0 0 1 2.08 4.18 2 2 0 0 1 4.06 2h3a2 2 0 0 1 2 1.72c.12.86.3 1.7.54 2.5a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.58-1.06a2 2 0 0 1 2.11-.45c.8.24 1.64.42 2.5.54A2 2 0 0 1 22 16.92z"/>
-                  </svg>
-                </span>
-                <span>טלפון:</span>
-                <a href="tel:+972545768495" style="font-weight:900; color:var(--deep);">0545768495</a>
-              </div>
-
-              <div class="contactRow" style="margin-top:10px;">
-                <span class="contactIcon" aria-hidden="true">📍</span>
-                <span>חיים לבב 21, נהריה</span>
-              </div>
-
-              <div class="contactActions">
-                <a class="btn primary" href="https://wa.me/972545768495" target="_blank" rel="noopener">WhatsApp</a>
-                <a class="btn" href="mailto:laky.rony@gmail.com">מייל</a>
-              </div>
-            </div>
-
-            <div class="contactItem">
-              <div class="contactRow">
-                <span class="contactIcon" aria-hidden="true">🔗</span>
-                <span style="font-weight:900; color:var(--deep);">קישורים</span>
-              </div>
-
-              <div class="contactActions">
-                <a class="btn" href="https://www.instagram.com/rony_papovian/" target="_blank" rel="noopener">Instagram</a>
-                <a class="btn" href="https://www.facebook.com/Rony.papovian" target="_blank" rel="noopener">Facebook</a>
-              </div>
-
-              <div class="contactActions" style="margin-top:6px;">
-                <a class="btn navLink" href="#top">חזרה למעלה</a>
-              </div>
-            </div>
-          </div>
+    <section id="reviews">
+      <div class="sectionInner">
+        <h2 style="text-align:center; color:var(--deep); margin-bottom:25px;">מה המטופלים אומרים</h2>
+        <div class="testimonial-grid">
+          <div class="testimonial-card"><span class="stars">★★★★★</span><span class="testimonial-text">"רוני פשוט מדהימה, קשובה ומקצועית! כנכה צהל ואחד שסובל מבעיות גב עם הקרנות אחרי שני טיפולים והאיכות חיים שלי השתפרה פלאים בזכותה. ממליץ מאוד!"</span><span class="testimonial-author">גיא סרור (ביקורת גוגל)</span></div>
+          <div class="testimonial-card"><span class="stars">★★★★★</span><span class="testimonial-text">"הגעתי לטיפול אצל רוני עם כאבי גב תחתון חזקים שהשפיעו לרעה על אורך החיים שלי. רוני תשאלה אותי במקצועיות רבה ולאחר אבחנה של מקור הכאב החלה בטיפול. אחרי שני טיפולים אני יכול להעיד שהכאבים חלפו!"</span><span class="testimonial-author">אוהד שוהם (ביקורת גוגל)</span></div>
+          <div class="testimonial-card"><span class="stars">★★★★★</span><span class="testimonial-text">"מטפלת מעולה אוירה נעימה וטיפול שמשפר את רמת הכאבים ממאה לאפס תודה רבה רוני 🙏"</span><span class="testimonial-author">gabi yaakov (ביקורת גוגל)</span></div>
         </div>
-      </details>
+      </div>
     </section>
 
-    <footer>
-      &copy; 2026 רוני פפוביאן — כל הזכויות שמורות
+    <section id="contact">
+        <div class="sectionInner">
+          <h2 style="text-align:center; color:var(--deep); margin-bottom:20px;">יצירת קשר</h2>
+          <div class="contact-box-unified">
+            
+            <div class="contact-split">
+                <div class="contact-text-side">
+                    <h3 style="color:var(--deep); margin-bottom:20px;">בואו נרגיש טוב יותר</h3>
+                    
+                    <p class="contact-info"><strong>טלפון:</strong> 054-5768495</p>
+                    <p class="contact-info"><strong>כתובת:</strong> חיים לבב 21, נהריה</p>
+        
+                    <div class="social-icons-row">
+                      <a href="https://wa.me/972545768495" target="_blank" class="social-icon-link" aria-label="וואטסאפ"><i class="fab fa-whatsapp"></i></a>
+                      <a href="https://www.instagram.com/rony_papovian/" target="_blank" class="social-icon-link" aria-label="אינסטגרם"><i class="fab fa-instagram"></i></a>
+                      <a href="https://www.facebook.com/Rony.papovian" target="_blank" class="social-icon-link" aria-label="פייסבוק"><i class="fab fa-facebook"></i></a>
+                      <a href="tel:0545768495" class="social-icon-link" aria-label="חיוג"><i class="fas fa-phone"></i></a>
+                    </div>
+        
+                    <a class="btn primary" href="https://wa.me/972545768495" target="_blank" style="width:100%; padding:15px; font-size:16px;">תיאום תור בוואטסאפ</a>
+                </div>
+
+                <div class="contact-map-side">
+                   <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3345.451959184611!2d35.1122587!3d33.0182214!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x151dcfb844d65a21%3A0x2ae6a977800ec455!2z16jXldeg15kg16TXpNeV15HXmdeQ158g15DXldeh15jXkNeV16TXqteZ16ogRC5P!5e0!3m2!1siw!2sil!4v1769786443787!5m2!1siw!2sil" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+
+          </div>
+        </div>
+    </section>
+
+    <footer style="text-align:center; padding:20px; font-size:14px; color:#666; background:#f9f9f9; border-top:1px solid #eee;">
+      <p>© 2026 רוני פפוביאן — כל הזכויות שמורות</p>
+      <p style="font-size:12px; max-width:600px; margin:10px auto; line-height:1.4;">המידע המופיע באתר נועד לידע כללי בלבד ואינו מהווה תחליף לייעוץ רפואי, אבחון או טיפול מקצועי. בכל בעיה רפואית יש להיוועץ ברופא.</p>
+      <button onclick="document.getElementById('a11yModal').style.display='flex'" style="background:none; border:none; text-decoration:underline; cursor:pointer; font-size:14px; color:#666;">הצהרת נגישות</button>
     </footer>
+
+    <div class="modal-overlay" id="a11yModal">
+      <div class="modal-content">
+        <button class="modal-close" onclick="document.getElementById('a11yModal').style.display='none'">✕</button>
+        <h3>הצהרת נגישות</h3>
+        <p>אני רוני פפוביאן, רואה חשיבות רבה במתן שירות שוויוני לכלל המטופלים והגולשים, ובשיפור השירות הניתן לבעלי מוגבלויות.</p>
+        <p><strong>נגישות באתר האינטרנט:</strong></p>
+        <ul>
+            <li>האתר מותאם לצפייה בסוגי דפדפנים שונים.</li>
+            <li>האתר מותאם לצפייה במכשירים ניידים (רספונסיבי).</li>
+            <li>האתר מותאם לאנשים עם לקות ראייה ומאפשר הגדלת גופן ושינוי ניגודיות (באמצעות סרגל הנגישות בתחתית המסך).</li>
+            <li>התכנים באתר כתובים בשפה ברורה ופשוטה.</li>
+            <li>אמצעי הניווט באתר פשוטים וברורים.</li>
+        </ul>
+        <p><strong>הסדרי נגישות בקליניקה:</strong></p>
+        <p>הקליניקה ממוקמת בחיים לבב 21, נהריה. ישנה חניה נגישה בקרבת מקום וגישה לקליניקה ללא מדרגות. לפרטים נוספים ניתן ליצור קשר.</p>
+        <p><strong>יצירת קשר:</strong></p>
+        <p>אם נתקלתם בקושי לגלוש באתר או שיש לכם הערה בנושא, אשמח אם תצרו איתי קשר בטלפון 054-5768495.</p>
+      </div>
+    </div>
 
   </main>
 
   <script>
-    // Mobile menu open/close
     const menuBtn = document.getElementById('menuBtn');
     const menuOverlay = document.getElementById('menuOverlay');
     const mobileMenu = document.getElementById('mobileMenu');
     const menuClose = document.getElementById('menuClose');
 
-    function openMenu(){
-      menuOverlay.hidden = false;
-      mobileMenu.hidden = false;
-      menuBtn.setAttribute('aria-expanded','true');
-    }
-    function closeMenu(){
-      menuOverlay.hidden = true;
-      mobileMenu.hidden = true;
-      menuBtn.setAttribute('aria-expanded','false');
+    function toggleMenu() {
+      const isHidden = mobileMenu.hidden;
+      mobileMenu.hidden = !isHidden;
+      menuOverlay.hidden = !isHidden;
+      const newState = !mobileMenu.hidden;
+      menuBtn.setAttribute('aria-expanded', newState);
     }
 
-    menuBtn?.addEventListener('click', openMenu);
-    menuClose?.addEventListener('click', closeMenu);
-    menuOverlay?.addEventListener('click', closeMenu);
+    menuBtn.addEventListener('click', toggleMenu);
+    menuClose.addEventListener('click', toggleMenu);
+    menuOverlay.addEventListener('click', toggleMenu);
 
-    function openIfDetails(el){
-      if (!el) return;
-      if (el.tagName && el.tagName.toLowerCase() === 'details') {
-        el.open = true;
-      }
-    }
-
-    function smoothScrollTo(el){
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        });
-      });
-    }
-
-    // Smooth scroll + open accordion section + close mobile menu
-    document.querySelectorAll('a.navLink').forEach(a => {
-      a.addEventListener('click', (e) => {
-        const href = a.getAttribute('href');
-        if (!href || !href.startsWith('#')) return;
-
-        const el = document.querySelector(href);
-        if (!el) return;
-
-        e.preventDefault();
-
-        openIfDetails(el);
-
-        const parentDetails = el.closest && el.closest('details');
-        if (parentDetails) parentDetails.open = true;
-
-        smoothScrollTo(el);
-
-        if (a.hasAttribute('data-close-menu')) closeMenu();
+    document.querySelectorAll('[data-close]').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.hidden = true;
+        menuOverlay.hidden = true;
+        menuBtn.setAttribute('aria-expanded', 'false');
       });
     });
+
+    // תיקון גלילה חלקה עם קיזוז הדר (JavaScript Manual Offset)
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        const targetElement = document.querySelector(targetId);
+        
+        if (targetElement) {
+          e.preventDefault();
+          
+          // פתיחת אקורדיון אם נדרש
+          if (targetElement.tagName.toLowerCase() === 'details') {
+            targetElement.open = true;
+          } else {
+            const parentDetails = targetElement.closest('details');
+            if (parentDetails) parentDetails.open = true;
+          }
+
+          // חישוב מיקום מדויק עם מרווח מהתפריט העליון
+          const headerOffset = 100; // הגובה של ההדר + מרווח נשימה
+          const elementPosition = targetElement.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+      
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: "smooth"
+          });
+        }
+      });
+    });
+
+    const a11yBtn = document.getElementById('a11yBtn');
+    const a11yMenu = document.getElementById('a11yMenu');
+    a11yBtn.addEventListener('click', () => { a11yMenu.style.display = a11yMenu.style.display === 'flex' ? 'none' : 'flex'; });
   </script>
 </body>
 </html>
